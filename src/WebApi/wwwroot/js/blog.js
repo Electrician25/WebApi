@@ -12,6 +12,7 @@ function sendGetRequest(uri) {
         .then((response) => {
             return response.json();
         })
+
     return search_result;
 }
 
@@ -19,7 +20,7 @@ async function myFunction() {
     var authors = [];
     var topics = [];
     var names = [];
-    var res = [];
+    var result = [];
     let step = 0;
     let blogs = await sendGetRequest("https://localhost:7299/api/blogs");
 
@@ -38,13 +39,15 @@ async function myFunction() {
         names[i] = JSON.stringify(blogs[i].blogName);
     }
 
-    for(let i = 0; i < author.length; i++)
+    for(let i = 0; i < authors.length; i++)
     {
-        res[0] = authors[i];
-        res[1] = topics[i];
-        res[2] = names[i];
+        result[0] = authors[i];
+        result[1] = topics[i];
+        result[2] = names[i];
+
         step++;
-        document.getElementById("blog" + step).innerText = res;
+        
+        document.getElementById("blog" + step).innerText = result;
     }
 }
 
