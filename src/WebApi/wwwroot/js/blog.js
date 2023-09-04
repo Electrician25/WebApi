@@ -16,7 +16,6 @@ function sendGetRequest(uri) {
 }
 
 async function myFunction() {
-   
     var authors = [];
     var topics = [];
     var names = [];
@@ -48,8 +47,6 @@ async function myFunction() {
         document.getElementById("blog" + step).innerText = res;
     }
 }
-
-
 
 function deleteButton() {
     alert("Эта функция будет выполнять функцию удаления");
