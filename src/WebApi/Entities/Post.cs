@@ -7,6 +7,6 @@
         public string? PostDescription { get; set; } 
 
         public int? BlogsId { get; set; }
-        public Blog Blog { get; set; } 
+        public Blog? Blog { get; set; } 
     }
 }

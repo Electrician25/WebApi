@@ -4,7 +4,7 @@ namespace WebApi.Entities
 {
     public class Blog
     {
-        public int BlogId { get; set; }
+        public int? BlogId { get; set; }
         public string? BlogName { get; set; }
 
         public string? BlogAuthor { get; set; }

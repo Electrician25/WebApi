@@ -15,10 +15,18 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("writeLine")]
-        public IActionResult GetLine() 
+        [Route("writeBlogs")]
+        public IActionResult GetBlogs() 
         {
             return _htmlResult(@"./wwwroot/html/index.html");
+        }
+
+
+        [HttpGet]
+        [Route("writePosts")]
+        public IActionResult GetPosts()
+        {
+            return _htmlResult(@"./wwwroot/html/details.html");
         }
     }
 }
