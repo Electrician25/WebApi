@@ -25,7 +25,6 @@ html, body {
   }
   
 .input1 {
-    
     position: relative;
     display: flex;
     justify-content: center;
@@ -43,7 +42,7 @@ html, body {
     font-size: 1.2rem;
   }
   
-  .nav  a{
+  .nav a{
     display: flex;
     border: 3px solid rgb(0, 0, 0);
     width: 600px;
@@ -67,22 +66,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .image-applyButton {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-image: url('/image/applyButton.png');
-    background-size: cover;
-  }
-  
-  .image-applyButton:hover {
-    opacity: 0.8;
-  }
-  
-  .image-applyButton:active {
-    transform: scale(0.95);
   }
   
   .image-addbutton {
@@ -116,6 +99,23 @@ html, body {
   .image-refrashbutton:active {
     transform: scale(0.95);
   }
+
+  .image-applybutton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/applyButton.png');
+    background-size: cover;
+  }
+  
+  .image-applybutton:hover {
+    opacity: 0.8;
+  }
+  
+  .image-applybutton:active {
+    transform: scale(0.95);
+  }
+  
   
   .image-deletebutton {
     width: 40px;
