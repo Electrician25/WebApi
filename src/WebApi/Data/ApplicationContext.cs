@@ -49,6 +49,37 @@ namespace WebApi.Data
                     BlogTopic = "New .net 7 version"
                 },
             });
+
+
+            modelBuilder.Entity<Post>().HasData(
+            new Post[]
+            {
+                new () {
+                   PostId = 1,
+                   BlogsId = 1,
+                   PostName = "",
+                   PostDescription = ""
+                },
+
+                new () {
+                    BlogsId = 2,
+                    PostId = 2,
+                    PostName = "",
+                    PostDescription = ""
+                },
+                new () {
+                    PostId = 3,
+                    BlogsId = 3,
+                    PostName = "",
+                    PostDescription = ""
+                },
+                new () {
+                    PostId = 4,
+                    BlogsId= 4,
+                    PostName = "",
+                    PostDescription = ""
+                },
+            });
         }
     }
 }

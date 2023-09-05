@@ -1,0 +1,150 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: rgb(255, 255, 255);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 50px;
+  }
+  
+  .header {
+    height: 10px;
+    background-color:rgb(255, 255, 255);
+  }
+  
+  .container {
+    width: 800px;
+    min-height: 1000px;
+    margin: 0 auto;
+    background: white;
+  }
+  
+.input1 {
+    
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 525px;
+    font-size: 1.2rem;
+    height: 35px;
+}
+  .nav  {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 1.2rem;
+  }
+  
+  .nav  a{
+    display: flex;
+    border: 3px solid rgb(0, 0, 0);
+    width: 600px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    background-color:rgb(255, 255, 255);
+  }
+  
+  
+  .nav  a:hover {
+    opacity: 0.8;
+  }
+  
+  .nav  a:active{
+    transform: scale(0.95);
+  }
+  
+  .main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-applyButton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/applyButton.png');
+    background-size: cover;
+  }
+  
+  .image-applyButton:hover {
+    opacity: 0.8;
+  }
+  
+  .image-applyButton:active {
+    transform: scale(0.95);
+  }
+  
+  .image-addbutton {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-image: url('/image/addButton.png');
+    background-size: cover;
+  }
+  
+  .image-addbutton:hover {
+    opacity: 0.8;
+  }
+  
+  .image-addbutton:active {
+    transform: scale(0.95);
+  }
+  
+  .image-refrashbutton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/refrashButton.png');
+    background-size: cover;
+  }
+  
+  .image-refrashbutton:hover {
+    opacity: 0.8;
+  }
+  
+  .image-refrashbutton:active {
+    transform: scale(0.95);
+  }
+  
+  .image-deletebutton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/deleteButton.png');
+    background-size: cover;
+  }
+  
+  .image-deletebutton:hover {
+    opacity: 0.8;
+  }
+  
+  .image-deletebutton:active {
+    transform: scale(0.95);
+  }
+  
+  .image-editbutton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/editButton.png');
+    background-size: cover;
+  }
+  
+  .image-editbutton:hover {
+    opacity: 0.8;
+  }
+  
+  .image-editbutton:active {
+    transform: scale(0.95);
+  }
