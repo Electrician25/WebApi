@@ -72,7 +72,7 @@ html, body {
     width: 30px;
     height: 30px;
     border: none;
-    background-image: url('/image/addButton.png');
+    background-image: url('/image/addBlackButton.png');
     background-size: cover;
   }
   
@@ -118,10 +118,11 @@ html, body {
   
   
   .image-deletebutton {
+    
     width: 40px;
     height: 40px;
     border: none;
-    background-image: url('/image/deleteButton.png');
+    background-image: url('/image/deleteBlackButton.png');
     background-size: cover;
   }
   
