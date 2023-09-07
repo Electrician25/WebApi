@@ -1,5 +1,4 @@
-﻿myFunction();
-createButton();
+﻿addBlogsPage();
 
 function sendGetRequest(uri) {
    const myHeaders = new Headers()
@@ -17,66 +16,44 @@ function sendGetRequest(uri) {
     return search_result;
 }
 
-async function myFunction() {
-    var authors = [];
-    var topics = [];
-    var names = [];
-    var result = [];
-    let step = 0;
+async function addBlogsPage() {
     let blogs = await sendGetRequest("https://localhost:7299/api/blogs");
-
     for(let i = 0; i < blogs.length; i++)
     {
-        authors[i] = blogs[i].blogAuthor;
+        document.getElementById("blogAuthor" + i).innerText = "Author: " + blogs[i].blogAuthor;
+        document.getElementById("blogTopic" + i).innerText = "Topic: " + blogs[i].blogTopic;
+        document.getElementById("blogName" + i).innerText = "Blog name: " + blogs[i].blogName;
     }
-
-    for(let i = 0; i < blogs.length; i++)
-    {
-        topics[i] = blogs[i].blogTopic;
-    }
-
-    for(let i = 0; i < blogs.length; i++)
-    {
-        names[i] = blogs[i].blogName;
-    }
-
-    for(let i = 0; i < authors.length; i++)
-    {
-        result[0] = authors[i];
-        result[1] = topics[i];
-        result[2] = names[i];
-
-        step++;
-
-        document.getElementById("blog" + step).innerText = result;
-    }
+    
+    addMainPageButton();
 }
 
-//sendDeleteRequestWithoutParse
+function addMainPageButton() {
+    document.getElementById('add')
+    .addEventListener('click', () => location = 'https://localhost:7299/api/html/writePosts');
+}
 
-//function sendDeleteRequestWithoutParse(json, uri) {
-    //const myHeaders = new Headers();
-    //myHeaders.append('Content-Type', 'application/json');
-    //const request = new Request(uri, {
-        //method: 'DELETE',
-        //body: json,
-        //headers:myHeaders
-    //});
+
+function sendDeleteRequestWithoutParse(json, uri) {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    const request = new Request(uri, {
+        method: 'DELETE',
+        body: json,
+        headers:myHeaders
+    });
     
-    //let search_result = fetch(request)
-        //.then((response) => {
-           // return response.text()
-        //});
+    let search_result = fetch(request)
+        .then((response) => {
+            return response.text()
+        });
 
-    //return search_result;
-//}
+    return search_result;
+}
 
-//function getValueByElementId(id)
-//{
-    //let element = document.getElementById(id);
+async function deleteBlogPage(){
 
-    //return element.value;
-//}
+}
 
 function deleteButton() {
     alert("Эта функция будет выполнять функцию удаления");
@@ -88,11 +65,6 @@ function updateButton(){
 
 function createButton(){
     
-}
-
-function addButton(){
-    document.getElementById('add')
-    .addEventListener('click', () => location = 'https://localhost:7299/api/html/writePosts');
 }
 
 function applyButton(){
