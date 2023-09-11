@@ -101,10 +101,11 @@ html, body {
   }
 
   .image-applybutton {
+    margin: 2px;
     width: 40px;
     height: 40px;
     border: none;
-    background-image: url('/image/applyButton.png');
+    background-image: url('/image/applyBlackButton.png');
     background-size: cover;
   }
   

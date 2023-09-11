@@ -18,7 +18,7 @@ namespace WebApi.Controllers
         [Route("writeBlogs")]
         public IActionResult GetBlogs() 
         {
-            return _htmlResult(@"./wwwroot/html/blogs.html");
+            return _htmlResult(@"./wwwroot/html/blogsList.html");
         }
 
 
@@ -26,7 +26,22 @@ namespace WebApi.Controllers
         [Route("writePosts")]
         public IActionResult GetPosts()
         {
-            return _htmlResult(@"./wwwroot/html/posts.html");
+            return _htmlResult(@"./wwwroot/html/creatingNewPost.html");
         }
+
+        [HttpGet]
+        [Route("writePost")]
+        public IActionResult GetPost()
+        {
+            return _htmlResult(@"./wwwroot/html/listenPostPage.html");
+        }
+
+        [HttpGet]
+        [Route("getPosts")]
+        public IActionResult GetBlog()
+        {
+            return _htmlResult(@"./wwwroot/html/listenPostPage.html");
+        }
+
     }
 }
