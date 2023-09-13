@@ -18,18 +18,18 @@ function sendGetBlogRequest(uri) {
 
 function sendDeleteBlogRequest(uri) {
     const myHeaders = new Headers()
-     myHeaders.append('Content-Type', 'application/json')
-     const request = new Request(uri, {
-         method: 'DELETE',
-         headers: myHeaders
-     });
+    myHeaders.append('Content-Type', 'application/json')
+    const request = new Request(uri, {
+        method: 'DELETE',
+        headers: myHeaders
+    });
  
-     let search_result = fetch(request)
-         .then((response) => {
-             return response.json();
-         })
+    let search_result = fetch(request)
+        .then((response) => {
+            return response.json();
+        })
  
-     return search_result;
+    return search_result;
  }
 
 async function renderBlogPage() {
@@ -39,7 +39,7 @@ async function renderBlogPage() {
         let blog = blogs[i];
         let button = document.createElement("button");
         button.className = "deleteButton";
-        button.addEventListener("click",() => deleteButton(blog.blogId));
+        button.addEventListener("click",() => deleteButtonInMainBlogPage(blog.blogId));
         const newDiv = document.createElement("a");
         newDiv.href = `https://localhost:7299/api/posts/${blog.blogId}`;
         newDiv.className = "blog";
@@ -64,7 +64,7 @@ function addMainPageButton() {
     .addEventListener('click', () => location = 'https://localhost:7299/api/html/writePosts');
 }
 
-async function deleteButton(blogId) {
+async function deleteButtonInMainBlogPage(blogId) {
     let blogsId = await sendDeleteBlogRequest(`https://localhost:7299/api/blogs/${blogId}`);
     document.getElementById("blogsHolder").remove(blogsId);
 
