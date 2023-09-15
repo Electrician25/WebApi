@@ -1,32 +1,29 @@
-createBlog();
-
-function createBlog() {
-    let blogName = document.getElementById("blogName").value;
-    let blogTopic = document.getElementById("blogTopic").value;
-    let blogAuthor = document.getElementById("blogAuthor").value;
-    let blogDescription = document.getElementById("blogDescription").value;
- 
-    let button = document.createElement("button");
-    button.addEventListener("click",() => deletBlog(blog.blogId));
-    const newElement = document.createElement("a");
-    newElement.href = `https://localhost:7299/api/posts/0`;
-    newElement.className = "blog";
- 
-    let author = "Author: " + blogAuthor;
-    let topic = "Topic: " + blogTopic;
-    let name = "Blog name: " + blogName;
- 
-    newElement.append(author);
-    newElement.append(topic);
-    newElement.append(name);
- 
-    document.getElementById("blogsHolder").append(newElement);
- 
+const createBlog = async () => {
+    let json = JSON.stringify({
+    blogName: document.getElementById("blogName").value,
+    blogTopic: document.getElementById("blogTopic").value,
+    blogAuthor: document.getElementById("blogAuthor").value,
+    //blogDescription: document.getElementById("blogDescription").value
+    
+    });await sendPostRequest(json,"https://localhost:7299/api/blogs");
     document.getElementById('add')
-    .addEventListener('click', () => location = 'https://localhost:7299/api/html/writeBlogs');
+    addEventListener('click', () => location = 'https://localhost:7299/api/html/writeBlogs');
+    //document.addEventListener("DOMContentLoaded",function(e))
 }
- 
-async function deletBlog(blogId) {
-    let blogsId = await sendDeleteBlogRequest(`https://localhost:7299/api/blogs/${blogId}`);
-    document.getElementById("blogsHolder").remove(blogsId);
+
+function sendPostRequest(json, uri) {
+    const myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+    const request = new Request(uri, {
+        method: 'POST',
+        body: json,
+        headers:myHeaders
+    });
+    
+    let search_result = fetch(request)
+        .then((response) => {
+            return response.json()
+        })
+
+    return search_result;
 }
