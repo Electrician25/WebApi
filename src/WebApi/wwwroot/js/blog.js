@@ -44,9 +44,9 @@ async function renderBlogPage() {
         newDiv.href = `https://localhost:7299/api/posts/${blog.blogId}`;
         newDiv.className = "blog";
 
-        const newBlogAuthor = "Author: " + blog.blogAuthor;
-        const newBlogTopic = "Topic: " + blog.blogTopic;
-        const newBlogName = "Blog name: " + blog.blogName;
+        const newBlogAuthor = "Author: " + blog.blogAuthor + ". ";
+        const newBlogTopic = "Topic: " + blog.blogTopic + ". ";
+        const newBlogName = "Blog name: " + blog.blogName   + ". ";
 
         newDiv.append(newBlogAuthor);
         newDiv.append(newBlogTopic);
