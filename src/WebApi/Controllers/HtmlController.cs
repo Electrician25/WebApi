@@ -30,18 +30,10 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("writePost")]
+        [Route("postTest")]
         public IActionResult GetPost()
         {
-            return _htmlResult(@"./wwwroot/html/listenPostPage.html");
+            return _htmlResult(@"./wwwroot/html/test.html");
         }
-
-        [HttpGet]
-        [Route("getPosts")]
-        public IActionResult GetBlog()
-        {
-            return _htmlResult(@"./wwwroot/html/listenPostPage.html");
-        }
-
     }
 }

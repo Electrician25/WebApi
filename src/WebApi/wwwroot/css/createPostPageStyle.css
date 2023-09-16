@@ -57,7 +57,7 @@ html, body {
     opacity: 0.8;
   }
   
-  .nav  a:active{
+  .nav a:active{
     transform: scale(0.95);
   }
   
