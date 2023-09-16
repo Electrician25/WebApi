@@ -25,6 +25,14 @@ namespace WebApi.CrudServices
         {
             return _applicationContext.Posts.ToArray();
         }
+
+        public Post[] GetPostAndBlogsById(int id)
+        {
+            var posts = _applicationContext.Blogs.Find(id)
+                ?? throw new Exception();
+
+            return _applicationContext.Posts.Where(e => e.BlogId == id).OrderBy(e => e.PostId).ToArray();
+        }
        
         public Post GetPostById(int id)        
         {

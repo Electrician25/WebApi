@@ -21,10 +21,10 @@ namespace WebApi.Controllers
             return _postCrudService.AddNewPost(post);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Post> Get(int id)
+        [HttpGet("{id}/orders")]
+        public ActionResult<Post[]> Get(int id)
         {
-            return _postCrudService.GetPostById(id);
+            return _postCrudService.GetPostAndBlogsById(id);
         }
 
         [HttpGet]
