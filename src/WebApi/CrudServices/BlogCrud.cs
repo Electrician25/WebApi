@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Entities;
 
@@ -56,14 +57,10 @@ namespace WebApi.CrudServices
 
         public Blog DeleteBlog(int id) 
         {
-            var blogId = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == id);
+            var blogId = _applicationContext.Blogs.OrderBy(e => e.BlogName).Include(e => e.Post).First()
+                ?? throw new Exception();
 
-            if (blogId == null)
-            {
-                throw new Exception($"Blog id: {blogId} is not found");
-            }
-
-            _applicationContext.Blogs.Remove(blogId);
+            _applicationContext.Remove(blogId);
             _applicationContext.SaveChanges();
 
             return blogId;

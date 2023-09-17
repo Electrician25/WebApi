@@ -15,10 +15,10 @@ namespace WebApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Blog>()
-                .HasMany(e => e.Post)
-                .WithOne(e => e.Blog)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Post>()
+               .HasOne(p => p.Blog)
+               .WithMany(c => c.Post)
+               .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Blog>().HasData(
             new Blog[]

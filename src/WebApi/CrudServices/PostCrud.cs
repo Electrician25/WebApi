@@ -29,21 +29,9 @@ namespace WebApi.CrudServices
         public Post[] GetPostAndBlogsById(int id)
         {
             var posts = _applicationContext.Blogs.Find(id)
-                ?? throw new Exception();
+                ?? throw new Exception("GG");
 
             return _applicationContext.Posts.Where(e => e.BlogId == id).OrderBy(e => e.PostId).ToArray();
-        }
-       
-        public Post GetPostById(int id)        
-        {
-            var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == id);
-
-            if (post == null)
-            {
-                throw new Exception($"Post id: {post} not foud");
-            }
-
-            return post;
         }
 
         public Post UpdatePost(Post newPost) 
