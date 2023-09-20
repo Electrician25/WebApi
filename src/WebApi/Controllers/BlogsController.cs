@@ -21,10 +21,11 @@ namespace WebApi.Controllers
             return _blogCrudService.AddNewBlog(blog);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id}")]
         public ActionResult<Blog> Get(int id)
         { 
-            return _blogCrudService.GetBlogById(id);
+            return _blogCrudService.GetBlogId(id);
         }
 
         [HttpGet]
@@ -34,9 +35,10 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
-        public ActionResult<Blog> Update(Blog blog) 
+        [Route("{id}")]
+        public ActionResult<Blog> Update(int id,Blog blog) 
         {
-            return _blogCrudService.UpdateBlog(blog);
+            return _blogCrudService.UpdateBlog(id,blog);
         }
 
         [HttpDelete("{id}")]

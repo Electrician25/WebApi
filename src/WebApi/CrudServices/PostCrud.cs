@@ -26,7 +26,7 @@ namespace WebApi.CrudServices
             return _applicationContext.Posts.ToArray();
         }
 
-        public Post[] GetPostAndBlogsById(int id)
+        public Post[] GetPostId(int id)
         {
             var posts = _applicationContext.Blogs.Find(id)
                 ?? throw new Exception("GG");

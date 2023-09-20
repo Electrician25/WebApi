@@ -16,24 +16,30 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("writeBlogs")]
-        public IActionResult GetBlogs() 
+        public IActionResult WriteBlogs() 
         {
-            return _htmlResult(@"./wwwroot/html/blogsList.html");
+            return _htmlResult(@"./wwwroot/html/blogMainPage.html");
         }
 
+        [HttpGet]
+        [Route("createBlog")]
+        public IActionResult CreateBlog()
+        {
+            return _htmlResult(@"./wwwroot/html/blogCreatePage.html");
+        }
+
+        [HttpGet]
+        [Route("updateBlog")]
+        public IActionResult UpdateBlog()
+        {
+            return _htmlResult(@"./wwwroot/html/blogUpdatePage.html");
+        }
 
         [HttpGet]
         [Route("writePosts")]
-        public IActionResult GetPosts()
+        public IActionResult WritePosts() 
         {
-            return _htmlResult(@"./wwwroot/html/creatingNewPost.html");
-        }
-
-        [HttpGet]
-        [Route("postTest")]
-        public IActionResult GetPost()
-        {
-            return _htmlResult(@"./wwwroot/html/test.html");
+            return _htmlResult(@"./wwwroot/html/postMainPage.html");
         }
     }
 }
