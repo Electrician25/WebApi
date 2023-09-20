@@ -21,10 +21,11 @@ namespace WebApi.Controllers
             return _postCrudService.AddNewPost(post);
         }
 
-        [HttpGet("{id}/orders")]
+        [HttpGet]
+        [Route("{id}")]
         public ActionResult<Post[]> Get(int id)
         {
-            return _postCrudService.GetPostAndBlogsById(id);
+            return _postCrudService.GetPostId(id);
         }
 
         [HttpGet]
@@ -34,12 +35,13 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
+        [Route("{id}/update")]
         public ActionResult<Post> Update(Post post)
         {
             return _postCrudService.UpdatePost(post);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}/delete")]
         public ActionResult<Post> Delete(int id)
         {
             return _postCrudService.DeletePost(id);

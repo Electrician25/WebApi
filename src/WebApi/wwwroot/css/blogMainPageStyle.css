@@ -110,18 +110,20 @@ body{
   transform: scale(0.95);
 }
 
-.image-editbutton {
+.updateButton {
+  display:table-cell;
+  vertical-align:middle;
   width: 40px;
   height: 40px;
   border: none;
-  background-image: url('/image/editButton.png');
+  background-image: url('/image/updateBlackButton.png');
   background-size: cover;
 }
 
-.image-editbutton:hover {
+.updateButton:hover {
   opacity: 0.8;
 }
 
-.image-editbutton:active {
+.updateButton:active {
   transform: scale(0.95);
 }

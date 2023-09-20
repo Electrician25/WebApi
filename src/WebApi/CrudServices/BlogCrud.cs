@@ -26,7 +26,7 @@ namespace WebApi.CrudServices
             return _applicationContext.Blogs.ToArray();
         }
 
-        public Blog GetBlogById(int id)
+        public Blog GetBlogId(int id)
         {
             var blogId = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == id);
 
@@ -38,9 +38,9 @@ namespace WebApi.CrudServices
             return blogId;
         }
 
-        public Blog UpdateBlog(Blog blog)
+        public Blog UpdateBlog(int id, Blog blog)
         {
-            var blogId = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == blog.BlogId);
+            var blogId = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == id);
 
             if (blogId == null)
             {
@@ -57,7 +57,7 @@ namespace WebApi.CrudServices
 
         public Blog DeleteBlog(int id) 
         {
-            var blogId = _applicationContext.Blogs.OrderBy(e => e.BlogName).Include(e => e.Post).First()
+            var blogId = _applicationContext.Blogs.Find(id)
                 ?? throw new Exception();
 
             _applicationContext.Remove(blogId);
