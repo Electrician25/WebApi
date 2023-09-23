@@ -1,0 +1,119 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: rgb(255, 255, 255);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 50px;
+  }
+  
+  .header {
+    height: 10px;
+    background-color:rgb(255, 255, 255);
+  }
+  
+  .container {
+    width: 800px;
+    min-height: 1000px;
+    margin: 0 auto;
+    background: white;
+  }
+  
+.input1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 525px;
+    font-size: 1.2rem;
+    height: 35px;
+}
+  .nav  {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 1.2rem;
+  }
+  
+  .nav a{
+    margin: 15px 5px;
+    display: flex;
+    border: 3px solid rgb(0, 0, 0);
+    width: 700px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    background-color:rgb(255, 255, 255);
+  }
+  
+  
+  .nav a:hover {
+    opacity: 0.8;
+  }
+  
+  .nav a:active{
+    transform: scale(0.95);
+  }
+  
+  .main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .addButton {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-image: url('/image/addBlackButton.png');
+    background-size: cover;
+  }
+  
+  .addButton:hover {
+    opacity: 0.8;
+  }
+  
+  .addButton:active {
+    transform: scale(0.95);
+  }
+  
+  .deleteButton {
+    
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/deleteBlackButton.png');
+    background-size: cover;
+  }
+  
+  .deleteButton:hover {
+    opacity: 0.8;
+  }
+  
+  .deleteButton:active {
+    transform: scale(0.95);
+  }
+  
+  .updateButton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/editButton.png');
+    background-size: cover;
+  }
+  
+  .updateButton:hover {
+    opacity: 0.8;
+  }
+  
+  .updateButton:active {
+    transform: scale(0.95);
+  }

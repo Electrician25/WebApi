@@ -16,6 +16,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [Route("{id}")]
         public ActionResult<Post> Add(Post post)
         {
             return _postCrudService.AddNewPost(post);
@@ -35,13 +36,14 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
-        [Route("{id}/update")]
-        public ActionResult<Post> Update(Post post)
+        [Route("{id}")]
+        public ActionResult<Post> Update(int id,Post post)
         {
-            return _postCrudService.UpdatePost(post);
+            return _postCrudService.UpdatePost(id,post);
         }
 
-        [HttpDelete("{id}/delete")]
+        [HttpDelete]
+        [Route("{id}")]
         public ActionResult<Post> Delete(int id)
         {
             return _postCrudService.DeletePost(id);

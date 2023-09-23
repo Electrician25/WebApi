@@ -41,5 +41,20 @@ namespace WebApi.Controllers
         {
             return _htmlResult(@"./wwwroot/html/postMainPage.html");
         }
+
+        [HttpGet]
+        [Route("createPost")]
+        public IActionResult CreatePosts()
+        {
+            return _htmlResult(@"./wwwroot/html/postCreatePage.html");
+        }
+
+
+        [HttpGet]
+        [Route("updatePost")]
+        public IActionResult UpdatePost()
+        {
+            return _htmlResult(@"./wwwroot/html/postUpdatePage.html");
+        }
     }
 }
