@@ -1,0 +1,115 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background: rgb(255, 255, 255);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body{
+    padding: 50px;
+  }
+  
+  .header {
+    height: 70px;
+    background-color:rgb(255, 255, 255);
+  }
+  
+  .container{
+    width: 800px;
+    min-height: 1000px;
+    margin: 0 auto;
+    background: white;
+  }
+  
+  .post{
+    display:table-cell;
+    vertical-align:middle;
+    margin: 5px 5px;
+    display: inline-flex;
+    border: 4px solid rgb(0, 0, 0);
+    width: 700px;
+    padding: 16px;
+    text-decoration: none;
+    color: black;
+    background-color:rgb(255, 255, 255);
+  }
+  
+  .post:hover{
+    opacity: 0.8;
+  }
+  
+  .post:active{
+    transform: scale(0.95);
+  }
+  
+  .nav li a:hover{
+    opacity: 0.8;
+  }
+  
+  .nav li a:active{
+    transform: scale(0.95);
+  }
+  
+  .main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .createButton {
+    margin:0 7px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-image: url('/image/addBlackButton.png');
+    background-size: cover;
+  }
+  
+  .createButton:hover {
+    opacity: 0.8;
+  }
+  
+  .createButton:active {
+    transform: scale(0.95);
+  }
+  
+  .deleteButton {
+    display:table-cell;
+    vertical-align:middle;
+    margin: 4px 1px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/deleteBlackButton.png');
+    background-size: cover;
+  }
+  
+  .deleteButton:hover {
+    opacity: 0.8;
+  }
+  
+  .deleteButton:active {
+    transform: scale(0.95);
+  }
+  
+  .updateButton {
+    display:table-cell;
+    vertical-align:middle;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/updateBlackButton.png');
+    background-size: cover;
+  }
+  
+  .updateButton:hover {
+    opacity: 0.8;
+  }
+  
+  .updateButton:active {
+    transform: scale(0.95);
+  }

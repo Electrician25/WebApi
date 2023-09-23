@@ -28,15 +28,17 @@ namespace WebApi.CrudServices
 
         public Post[] GetPostId(int id)
         {
-            var posts = _applicationContext.Blogs.Find(id)
-                ?? throw new Exception("GG");
-
-            return _applicationContext.Posts.Where(e => e.BlogId == id).OrderBy(e => e.PostId).ToArray();
+            var blog = _applicationContext.Blogs.Find(id);
+            if (blog == null)
+            {
+                throw new Exception();
+            }
+            return _applicationContext.Posts.Where(e => e.BlogId == id).ToArray();
         }
 
-        public Post UpdatePost(Post newPost) 
+        public Post UpdatePost(int id,Post newPost) 
         {
-            var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == newPost.PostId);
+            var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == id);
 
             if (post == null)
             {

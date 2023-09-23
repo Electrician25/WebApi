@@ -1,10 +1,9 @@
-const updateBlog = async () => {
+const updatePost = async () => {
     let json = JSON.stringify({
-    blogName: document.getElementById("blogName").value,
-    blogTopic: document.getElementById("blogTopic").value,
-    blogAuthor: document.getElementById("blogAuthor").value,
+    postName: document.getElementById("blogName").value,
+    postDescription: document.getElementById("postDescription").value,
     });
-    await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
+    await sendPutRequest(json,`https://localhost:7299/api/posts/${postId()}`);
     changePage();
 }
 
@@ -27,11 +26,11 @@ function sendPutRequest(json, uri) {
 
 function changePage(){
     document.getElementById('update')
-    .addEventListener('click', () => location = 'https://localhost:7299/api/html/writeBlogs');
+    .addEventListener('click', () => window.history.back());
 } 
 
-function blogId(){
+function postId(){
     let currentLocation = window.location.href.split('=');
-    let blogId = currentLocation[1];
-    return blogId;
+    let postId = currentLocation[1];
+    return postId;
 }
