@@ -55,9 +55,9 @@ namespace WebApi.CrudServices
             return blogId;
         }
 
-        public Blog DeleteBlog(int id) 
+        public Blog DeleteBlog() 
         {
-            var blogId = _applicationContext.Blogs.Find(id)
+            var blogId = _applicationContext.Blogs.OrderBy(e => e.BlogName).Include(e => e.Post).First()
                 ?? throw new Exception();
 
             _applicationContext.Remove(blogId);
