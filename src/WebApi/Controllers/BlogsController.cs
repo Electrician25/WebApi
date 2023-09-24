@@ -42,9 +42,9 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Blog> Delete(int id) 
+        public ActionResult<Blog> Delete() 
         {
-            return _blogCrudService.DeleteBlog(id);
+            return _blogCrudService.DeleteBlog();
         }
     }
 }
