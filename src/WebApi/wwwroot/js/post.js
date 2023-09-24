@@ -32,12 +32,19 @@ function sendDeleteRequest(uri) {
     return search_result;
 }
 
+function findsCurrentPostId(){
+    let splitOnPostId = window.location.href.split('=');
+    let postId = splitOnPostId[1];
+    return postId;
+}
+
 async function rendersPostPage() {    
     let postRequest = await sendGetRequest(`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
+    buttonCreatesPost(findsCurrentPostId());
     for(let i = 0; i < postRequest.length; i++)
     {
         let post = postRequest[i];
-        buttonCreatesPost(post.postId+1);
+        
         createsBlogElementOnPage(post);
         updatesPost().addEventListener('click', () => buttonUpdates(post.postId));
         deletesPost().addEventListener('click', () => buttonDeletes(post.postId));
@@ -69,12 +76,6 @@ function updatesPost(){
     updatePostButton.id = "update";
     document.getElementById("postsHolder").append(updatePostButton);
     return updatePostButton;
-}
-
-function findsCurrentPostId(){
-    let splitOnPostId = window.location.href.split('=');
-    let postId = splitOnPostId[1];
-    return postId;
 }
 
 function buttonCreatesPost(postId){

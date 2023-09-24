@@ -15,7 +15,7 @@ namespace WebApi.CrudServices
 
         public Post AddNewPost(Post post)
         {
-            _applicationContext.Posts.AddAsync(post);
+            _applicationContext.Posts.Add(post);
             _applicationContext.SaveChanges();
 
             return post;

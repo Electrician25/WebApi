@@ -1,7 +1,8 @@
 const createPost = async () => {
     let json = JSON.stringify({
-    postName: document.getElementById("postName").value,
-    postDescription: document.getElementById("postDescription").value,
+        postName: document.getElementById("postName").value,
+        postDescription: document.getElementById("postDescription").value,
+        blogId: findsCurrentPostId()
     });
     await sendPostRequest(json,`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
     changesLocation();
