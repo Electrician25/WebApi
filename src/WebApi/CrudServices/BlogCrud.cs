@@ -9,61 +9,67 @@ namespace WebApi.CrudServices
     {
         private readonly ApplicationContext _applicationContext;
 
-        public BlogCrud(ApplicationContext applicationContext) 
+        public BlogCrud(ApplicationContext applicationContext)
         {
             _applicationContext = applicationContext;
         }
-        public Blog AddNewBlog(Blog blog)
+        public Blog AddsNewBlog(Blog newBlog)
         {
-            _applicationContext.Blogs.Add(blog);
+            if (newBlog == null)
+            {
+                throw new Exception($"Blog id: {newBlog} is not found");
+            }
+
+            _applicationContext.Blogs.Add(newBlog);
             _applicationContext.SaveChanges();
 
-            return blog;
+            return newBlog;
         }
 
-        public Blog[] GetAllBlogs() 
+        public Blog[] GetsAllBlogs()
         {
             return _applicationContext.Blogs.ToArray();
         }
 
-        public Blog GetBlogId(int id)
+        public Blog GetsBlogById(int blogId)
         {
-            var blogId = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == id);
+            var blog = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == blogId);
 
-            if (blogId == null)
+            if (blog == null)
             {
-                throw new Exception($"Blog id: {blogId} is not found");
+                throw new Exception($"Blog id: {blog} is not found");
             }
 
-            return blogId;
+            return blog;
         }
 
-        public Blog UpdateBlog(int id, Blog blog)
+        public Blog UpdatesBlogById(int blogId, Blog newBlog)
         {
-            var blogId = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == id);
+            var currentBlog = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == blogId);
 
-            if (blogId == null)
+            if (currentBlog == null)
             {
-                throw new Exception($"Blog id: {blogId} is not found");
+                throw new Exception($"Blog id: {currentBlog} is not found");
             }
 
-            blogId.BlogName = blog.BlogName;
-            blogId.BlogAuthor = blog.BlogAuthor;
-            blogId.BlogTopic = blog.BlogTopic;
+            currentBlog.BlogName = newBlog.BlogName;
+            currentBlog.BlogAuthor = newBlog.BlogAuthor;
+            currentBlog.BlogTopic = newBlog.BlogTopic;
+
             _applicationContext.SaveChanges();
 
-            return blogId;
+            return currentBlog;
         }
 
-        public Blog DeleteBlog() 
+        public Blog DeleteBlog(int blogId)
         {
-            var blogId = _applicationContext.Blogs.OrderBy(e => e.BlogName).Include(e => e.Post).First()
-                ?? throw new Exception();
+            var blog = _applicationContext.Blogs.Where(e => e.BlogId == blogId).Include(e => e.Post).First()
+               ?? throw new Exception();
 
-            _applicationContext.Remove(blogId);
+            _applicationContext.Remove(blog);
             _applicationContext.SaveChanges();
 
-            return blogId;
+            return blog;
         }
     }
 }

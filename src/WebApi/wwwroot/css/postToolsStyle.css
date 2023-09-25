@@ -117,3 +117,19 @@ html, body {
   .updateButton:active {
     transform: scale(0.95);
   }
+
+  .image-applybutton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('/image/applyBlackButton.png');
+    background-size: cover;
+  }
+  
+  .image-applybutton:hover {
+    opacity: 0.8;
+  }
+  
+  .image-applybutton:active {
+    transform: scale(0.95);
+  }

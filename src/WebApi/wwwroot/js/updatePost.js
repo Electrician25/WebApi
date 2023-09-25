@@ -1,7 +1,7 @@
 const updatePost = async () => {
     let json = JSON.stringify({
-    postName: document.getElementById("blogName").value,
-    postDescription: document.getElementById("postDescription").value,
+        postName: document.getElementById("blogName").value,
+        postDescription: document.getElementById("postDescription").value,
     });
     await sendPutRequest(json,`https://localhost:7299/api/posts/${postId()}`);
     changePage();

@@ -13,7 +13,7 @@ namespace WebApi.CrudServices
             _applicationContext = applicatioContext;
         }
 
-        public Post AddNewPost(Post post)
+        public Post AddsNewPost(Post post)
         {
             _applicationContext.Posts.Add(post);
             _applicationContext.SaveChanges();
@@ -21,40 +21,42 @@ namespace WebApi.CrudServices
             return post;
         }
 
-        public Post[] GetAllPosts()
+        public Post[] GetsAllPosts()
         {
             return _applicationContext.Posts.ToArray();
         }
 
-        public Post[] GetPostId(int id)
+        public Post[] GetsPostById(int postId)
         {
-            var blog = _applicationContext.Blogs.Find(id);
-            if (blog == null)
-            {
-                throw new Exception();
-            }
-            return _applicationContext.Posts.Where(e => e.BlogId == id).ToArray();
-        }
-
-        public Post UpdatePost(int id,Post newPost) 
-        {
-            var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == id);
+            var post = _applicationContext.Blogs.Find(postId);
 
             if (post == null)
             {
                 throw new Exception($"Post id: {post} not foud");
             }
 
-            post.PostName = newPost.PostName;
-            post.PostDescription = newPost.PostDescription;
-            _applicationContext.SaveChanges();
-
-            return post;
+            return _applicationContext.Posts.Where(e => e.BlogId == postId).ToArray();
         }
 
-        public Post DeletePost(int id)
+        public Post UpdatesPostById(int postId, Post post) 
         {
-            var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == id);
+            var newPost = _applicationContext.Posts.FirstOrDefault(p => p.PostId == postId);
+
+            if (newPost == null)
+            {
+                throw new Exception($"Post id: {newPost} not foud");
+            }
+
+            newPost.PostName = post.PostName;
+            newPost.PostDescription = post.PostDescription;
+            _applicationContext.SaveChanges();
+
+            return newPost;
+        }
+
+        public Post DeletesPostById(int postId)
+        {
+            var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == postId);
 
             if (post == null)
             {

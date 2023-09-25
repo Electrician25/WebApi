@@ -19,34 +19,34 @@ namespace WebApi.Controllers
         [Route("{id}")]
         public ActionResult<Post> Add(Post post)
         {
-            return _postCrudService.AddNewPost(post);
+            return _postCrudService.AddsNewPost(post);
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<Post[]> Get(int id)
         {
-            return _postCrudService.GetPostId(id);
+            return _postCrudService.GetsPostById(id);
         }
 
         [HttpGet]
         public ActionResult<Post[]> GetAll()
         {
-            return _postCrudService.GetAllPosts();
+            return _postCrudService.GetsAllPosts();
         }
 
         [HttpPut]
         [Route("{id}")]
         public ActionResult<Post> Update(int id,Post post)
         {
-            return _postCrudService.UpdatePost(id,post);
+            return _postCrudService.UpdatesPostById(id,post);
         }
 
         [HttpDelete]
         [Route("{id}")]
         public ActionResult<Post> Delete(int id)
         {
-            return _postCrudService.DeletePost(id);
+            return _postCrudService.DeletesPostById(id);
         }
     }
 }
