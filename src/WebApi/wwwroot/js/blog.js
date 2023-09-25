@@ -55,18 +55,19 @@ async function rendersBlogPage() {
     { 
         let blog = blogs[i];
         createsBlogElementOnPage(blog);
-        deletesBlog().addEventListener("click",() => buttonDeletes(blog.blogId));
         updatesBlog().addEventListener("click",() => buttonUpdates(blog.blogId));
+        deletesBlog().addEventListener("click",() => buttonDeletes(blog.blogId));
     }
+    buttonCreates();
 }
 
 function createsBlogElementOnPage(blog){
-    const blogElement = document.createElement("a");
+    let blogElement = document.createElement("a");
     blogElement.href = `https://localhost:7299/api/html/writePosts?id=${blog.blogId}`;
+    let author = "Author: " + blog.blogAuthor + ". ";
+    let topic = "Topic: " + blog.blogTopic + ". ";
+    let name = "Blog name: " + blog.blogName + ". ";
     blogElement.className = "blog";
-    const author = "Author: " + blog.blogAuthor + ". ";
-    const topic = "Topic: " + blog.blogTopic + ". ";
-    const name = "Blog name: " + blog.blogName + ". ";
     blogElement.append(author);
     blogElement.append(topic);
     blogElement.append(name);
@@ -77,6 +78,7 @@ function createsBlogElementOnPage(blog){
 function deletesBlog(){
     let deleteButton = document.createElement("button");
     deleteButton.className = "deleteButton";
+    deleteButton.id = "delete";
     document.getElementById("blogsHolder").append(deleteButton);
     return deleteButton;
 }
@@ -91,7 +93,7 @@ function updatesBlog(){
 
 function buttonCreates() {
     document.getElementById('add')
-    .addEventListener('click', () => location = 'https://localhost:7299/api/html/createBlog');
+    .addEventListener('click', () => location = `https://localhost:7299/api/html/createBlog`);
 }
 
 async function buttonDeletes(blogId) {

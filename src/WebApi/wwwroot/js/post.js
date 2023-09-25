@@ -1,5 +1,6 @@
 rendersPostPage();
 
+
 function sendGetRequest(uri) {
     const myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
@@ -44,7 +45,6 @@ async function rendersPostPage() {
     for(let i = 0; i < postRequest.length; i++)
     {
         let post = postRequest[i];
-        
         createsBlogElementOnPage(post);
         updatesPost().addEventListener('click', () => buttonUpdates(post.postId));
         deletesPost().addEventListener('click', () => buttonDeletes(post.postId));
