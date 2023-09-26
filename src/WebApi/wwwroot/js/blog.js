@@ -50,15 +50,16 @@ function sendDeleteBlogRequest(uri) {
 }
 
 async function rendersBlogPage() {
+    
     let blogs = await sendGetBlogRequest("https://localhost:7299/api/blogs");
     for(let i = 0; i < blogs.length; i++)
     { 
         let blog = blogs[i];
         createsBlogElementOnPage(blog);
-        updatesBlog().addEventListener("click",() => buttonUpdates(blog.blogId));
-        deletesBlog().addEventListener("click",() => buttonDeletes(blog.blogId));
+        updatesBlogButton().addEventListener("click",() => updatesBlogPageFunction(blog.blogId));
+        deletesBlogButton().addEventListener("click",() => deletesBlogFunction(blog.blogId));
     }
-    buttonCreates();
+    createsBlogPageFunction();
 }
 
 function createsBlogElementOnPage(blog){
@@ -75,7 +76,7 @@ function createsBlogElementOnPage(blog){
     return blogElement;
 }
 
-function deletesBlog(){
+function deletesBlogButton(){
     let deleteButton = document.createElement("button");
     deleteButton.className = "deleteButton";
     deleteButton.id = "delete";
@@ -83,7 +84,7 @@ function deletesBlog(){
     return deleteButton;
 }
 
-function updatesBlog(){
+function updatesBlogButton(){
     let updateButton = document.createElement("button");
     updateButton.className = "updateButton";
     updateButton.id = "update";
@@ -91,19 +92,19 @@ function updatesBlog(){
     return updateButton;
 }
 
-function buttonCreates() {
+function createsBlogPageFunction() {
     document.getElementById('add')
     .addEventListener('click', () => location = `https://localhost:7299/api/html/createBlog`);
 }
 
-async function buttonDeletes(blogId) {
+async function deletesBlogFunction(blogId) {
     let blogsId = await sendDeleteBlogRequest(`https://localhost:7299/api/blogs/${blogId}`);
     document.getElementById("blogsHolder").remove(blogsId);
 
     location.reload();
 }
 
-function buttonUpdates(blogId) {
+function updatesBlogPageFunction(blogId) {
     document.getElementById('update')
     addEventListener('click', () => location = `https://localhost:7299/api/html/updateBlog?id=${blogId}`);
 }

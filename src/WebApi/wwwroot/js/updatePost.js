@@ -25,12 +25,15 @@ function sendPutRequest(json, uri) {
 }
 
 function changePage(){
+    let currentLocation = window.location.href.split('-');
+    let postIdLocation = currentLocation[1];
     document.getElementById('update')
-    .addEventListener('click', () => window.history.back());
+    .addEventListener('click', () => location = `https://localhost:7299/api/html/writePosts?id=${postIdLocation}`);
 } 
 
 function postId(){
     let currentLocation = window.location.href.split('=');
-    let postId = currentLocation[1];
+    let test = currentLocation[1].split('-');
+    let postId = test[0];
     return postId;
 }
