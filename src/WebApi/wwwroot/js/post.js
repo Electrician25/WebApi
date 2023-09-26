@@ -1,6 +1,5 @@
 rendersPostPage();
 
-
 function sendGetRequest(uri) {
     const myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
@@ -31,12 +30,6 @@ function sendDeleteRequest(uri) {
         })
  
     return search_result;
-}
-
-function findsCurrentPostId(){
-    let splitOnPostId = window.location.href.split('=');
-    let postId = splitOnPostId[1];
-    return postId;
 }
 
 async function rendersPostPage() {    
@@ -78,6 +71,12 @@ function updatesPost(){
     return updatePostButton;
 }
 
+function findsCurrentPostId(){
+    let splitOnPostId = window.location.href.split('=');
+    let postId = splitOnPostId[1];
+    return postId;
+}
+
 function buttonCreatesPost(postId){
     document.getElementById('create')
     .addEventListener('click', () => location = `https://localhost:7299/api/html/createPost?id=${postId}`);
@@ -85,7 +84,9 @@ function buttonCreatesPost(postId){
 
 function buttonUpdates(postId){
     document.getElementById('update')
-    addEventListener('click', () => location = `https://localhost:7299/api/html/updatePost?id=${postId}`);
+    addEventListener('click', () => location = `https://localhost:7299/api/html/updatePost?id=${postId}-${findsCurrentPostId()}`);
+
+    location.reload();
 }
 
 async function buttonDeletes(postId){
