@@ -27,25 +27,21 @@ namespace WebApi.Data
                     BlogId = 0,
                     BlogAuthor = "Viktor Dresson",
                     BlogName = "Traveling",
-                    BlogTopic = "Bermuda Triangle"
                 },
                 new () {
                     BlogId = 1,
                     BlogAuthor = "Willson Wolles",
                     BlogName = "Underwater",
-                    BlogTopic = "Studying the bottom of the Mariana Trench"
                 },
                 new () {
                     BlogId = 2,
                     BlogAuthor = "Bill Wolles",
                     BlogName = "Space travalling",
-                    BlogTopic = "Exploring the dark side of the moon"
                 },
                  new () {
                     BlogId = 3,
                     BlogAuthor = "Alex Binner",
                     BlogName = ".NET 7 VERSION",
-                    BlogTopic = "New .net 7 version"
                 },
            });
 

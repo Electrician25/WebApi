@@ -54,8 +54,6 @@ namespace WebApi.CrudServices
 
             currentBlog.BlogName = newBlog.BlogName;
             currentBlog.BlogAuthor = newBlog.BlogAuthor;
-            currentBlog.BlogTopic = newBlog.BlogTopic;
-
             _applicationContext.SaveChanges();
 
             return currentBlog;

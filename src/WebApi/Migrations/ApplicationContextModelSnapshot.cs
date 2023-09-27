@@ -38,10 +38,6 @@ namespace WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("BlogTopic")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("BlogId");
 
                     b.ToTable("Blogs");
@@ -51,29 +47,25 @@ namespace WebApi.Migrations
                         {
                             BlogId = 0,
                             BlogAuthor = "Viktor Dresson",
-                            BlogName = "Traveling",
-                            BlogTopic = "Bermuda Triangle"
+                            BlogName = "Traveling"
                         },
                         new
                         {
                             BlogId = 1,
                             BlogAuthor = "Willson Wolles",
-                            BlogName = "Underwater",
-                            BlogTopic = "Studying the bottom of the Mariana Trench"
+                            BlogName = "Underwater"
                         },
                         new
                         {
                             BlogId = 2,
                             BlogAuthor = "Bill Wolles",
-                            BlogName = "Space travalling",
-                            BlogTopic = "Exploring the dark side of the moon"
+                            BlogName = "Space travalling"
                         },
                         new
                         {
                             BlogId = 3,
                             BlogAuthor = "Alex Binner",
-                            BlogName = ".NET 7 VERSION",
-                            BlogTopic = "New .net 7 version"
+                            BlogName = ".NET 7 VERSION"
                         });
                 });
 
@@ -89,9 +81,11 @@ namespace WebApi.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("PostDescription")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("PostId");
