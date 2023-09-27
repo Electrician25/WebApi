@@ -19,9 +19,8 @@ namespace WebApi.Migrations
                 {
                     BlogId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BlogName = table.Column<string>(type: "text", nullable: false),
-                    BlogAuthor = table.Column<string>(type: "text", nullable: false),
-                    BlogTopic = table.Column<string>(type: "text", nullable: false)
+                    BlogName = table.Column<string>(type: "text", nullable: true),
+                    BlogAuthor = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,8 +33,8 @@ namespace WebApi.Migrations
                 {
                     PostId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PostName = table.Column<string>(type: "text", nullable: true),
-                    PostDescription = table.Column<string>(type: "text", nullable: true),
+                    PostName = table.Column<string>(type: "text", nullable: false),
+                    PostDescription = table.Column<string>(type: "text", nullable: false),
                     BlogId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -51,13 +50,13 @@ namespace WebApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Blogs",
-                columns: new[] { "BlogId", "BlogAuthor", "BlogName", "BlogTopic" },
+                columns: new[] { "BlogId", "BlogAuthor", "BlogName" },
                 values: new object[,]
                 {
-                    { 0, "Viktor Dresson", "Traveling", "Bermuda Triangle" },
-                    { 1, "Willson Wolles", "Underwater", "Studying the bottom of the Mariana Trench" },
-                    { 2, "Bill Wolles", "Space travalling", "Exploring the dark side of the moon" },
-                    { 3, "Alex Binner", ".NET 7 VERSION", "New .net 7 version" }
+                    { 0, "Viktor Dresson", "Traveling" },
+                    { 1, "Willson Wolles", "Underwater" },
+                    { 2, "Bill Wolles", "Space travalling" },
+                    { 3, "Alex Binner", ".NET 7 VERSION" }
                 });
 
             migrationBuilder.InsertData(
