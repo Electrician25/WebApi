@@ -35,3 +35,31 @@ function findsCurrentPostId(){
     let postId = splitOnPostId[1];
     return postId;
 }
+
+const description = document.getElementById("postDescription");
+const descriptionError = document.querySelector("#postDescription + span.error");
+
+description.addEventListener("input", function (event) {
+  if (description.validity.valid) {
+    descriptionError.textContent = "";
+    descriptionError.className = "error";
+    document.getElementById("create").disabled = false;
+} 
+else{
+      showErrorDescription();
+}
+});
+
+function showErrorDescription() {
+if (description.validity.valueMissing) {
+    descriptionError.textContent = "Вам необходимо ввести название и имя поста";
+    document.getElementById("create").disabled = true;
+} 
+
+if (description.validity.tooShort) {
+    descriptionError.textContent = `Текст вашего поста должен содержать хотя бы ${description.minLength} символов, а вы ввели только ${description.value.length}.`;
+    document.getElementById("create").disabled = true;
+    }
+
+    descriptionError.className = "error active";
+}

@@ -19,9 +19,9 @@ namespace WebApi.Migrations
                 {
                     BlogId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BlogName = table.Column<string>(type: "text", nullable: true),
-                    BlogAuthor = table.Column<string>(type: "text", nullable: true),
-                    BlogTopic = table.Column<string>(type: "text", nullable: true)
+                    BlogName = table.Column<string>(type: "text", nullable: false),
+                    BlogAuthor = table.Column<string>(type: "text", nullable: false),
+                    BlogTopic = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +46,7 @@ namespace WebApi.Migrations
                         column: x => x.BlogId,
                         principalTable: "Blogs",
                         principalColumn: "BlogId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
