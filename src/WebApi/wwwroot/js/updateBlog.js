@@ -1,7 +1,6 @@
 const updateBlog = async () => {
     let json = JSON.stringify({
     blogName: document.getElementById("blogName").value,
-    blogTopic: document.getElementById("blogTopic").value,
     blogAuthor: document.getElementById("blogAuthor").value,
     });
     await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);

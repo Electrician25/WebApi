@@ -12,7 +12,11 @@ using WebApi.Data;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
+<<<<<<<< Updated upstream:src/WebApi/Migrations/20230926054908_InitialCreate.Designer.cs
     [Migration("20230926054908_InitialCreate")]
+========
+    [Migration("20230927204144_InitialCreate")]
+>>>>>>>> Stashed changes:src/WebApi/Migrations/20230927204144_InitialCreate.Designer.cs
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -39,10 +43,13 @@ namespace WebApi.Migrations
 
                     b.Property<string>("BlogName")
                         .IsRequired()
+<<<<<<<< Updated upstream:src/WebApi/Migrations/20230926054908_InitialCreate.Designer.cs
                         .HasColumnType("text");
 
                     b.Property<string>("BlogTopic")
                         .IsRequired()
+========
+>>>>>>>> Stashed changes:src/WebApi/Migrations/20230927204144_InitialCreate.Designer.cs
                         .HasColumnType("text");
 
                     b.HasKey("BlogId");

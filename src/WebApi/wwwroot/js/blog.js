@@ -66,11 +66,9 @@ function createsBlogElementOnPage(blog){
     let blogElement = document.createElement("a");
     blogElement.href = `https://localhost:7299/api/html/writePosts?id=${blog.blogId}`;
     let author = "Author: " + blog.blogAuthor + ". ";
-    let topic = "Topic: " + blog.blogTopic + ". ";
-    let name = "Blog name: " + blog.blogName + ". ";
+    let name = "Blog name: " + blog.blogName;
     blogElement.className = "blog";
     blogElement.append(author);
-    blogElement.append(topic);
     blogElement.append(name);
     document.getElementById("blogsHolder").append(blogElement);
     return blogElement;

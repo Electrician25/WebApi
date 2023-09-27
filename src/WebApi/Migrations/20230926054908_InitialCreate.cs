@@ -20,8 +20,12 @@ namespace WebApi.Migrations
                     BlogId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     BlogName = table.Column<string>(type: "text", nullable: false),
+<<<<<<<< Updated upstream:src/WebApi/Migrations/20230926054908_InitialCreate.cs
                     BlogAuthor = table.Column<string>(type: "text", nullable: false),
                     BlogTopic = table.Column<string>(type: "text", nullable: false)
+========
+                    BlogAuthor = table.Column<string>(type: "text", nullable: false)
+>>>>>>>> Stashed changes:src/WebApi/Migrations/20230927204144_InitialCreate.cs
                 },
                 constraints: table =>
                 {

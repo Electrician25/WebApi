@@ -10,8 +10,7 @@ namespace WebApi.Entities
         public string? BlogName { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string? BlogAuthor { get; set; }
-        [Required(AllowEmptyStrings = false)]
-        public string? BlogTopic { get; set; }
+
         [JsonIgnore]
         public ICollection<Post>? Post { get; set; }
     }

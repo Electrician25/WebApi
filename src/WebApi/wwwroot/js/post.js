@@ -47,7 +47,7 @@ async function rendersPostPage() {
 function createsBlogElementOnPage(post) {
     let newDiv = document.createElement('a');
     let name = "Post name: " + post.postName + ". ";
-    let description = "Post description: " + post.postDescription + ". ";
+    let description = "Post description: " + post.postDescription;
     newDiv.className = "post";
     newDiv.append(name);
     newDiv.append(description);
