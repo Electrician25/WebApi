@@ -13,9 +13,10 @@
         <div class = "header">
         <div class="nav">
             <ui>
-                <input class="input1" id = "blogAuthor" type="text" name="author" placeholder="Ваше ФИО:"></input>
-                <input class="input1" id = "blogName" type="text" name="name" placeholder="Введите название вашего поста:"></input>
-                <input class="input1" id = "blogDescription" type="text" name="description" placeholder="Введите текст вашего поста:"></input>
+                <input class="input1" id = "blogAuthor" type="text" name="author" placeholder="Ваше ФИО:" required minlength="8"></input>
+                <input class="input1" id = "blogName" type="text" name="name" placeholder="Введите название вашего блога:" required minlength="8"></input>
+                <input class="input1" id = "blogTopic" type="text" name="topic" placeholder="Введите тему вашего блога:" required minlength="8"></input>
+                <span class="error" aria-live="polite"></span>
                 <button class="image-applybutton" type="add" id="addNewBlog" name="createBlog" onclick="createBlog();"></button>
             </ui>
         </div>
