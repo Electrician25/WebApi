@@ -12,7 +12,7 @@ using WebApi.Data;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230924180006_InitialCreate")]
+    [Migration("20230926054908_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,12 +34,15 @@ namespace WebApi.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("BlogId"));
 
                     b.Property<string>("BlogAuthor")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("BlogName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("BlogTopic")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("BlogId");
@@ -150,7 +153,7 @@ namespace WebApi.Migrations
                     b.HasOne("WebApi.Entities.Blog", "Blog")
                         .WithMany("Post")
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Blog");
                 });
