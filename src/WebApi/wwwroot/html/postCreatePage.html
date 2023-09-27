@@ -14,6 +14,7 @@
         <div class="nav" id = "createNewPost">
             <ui>
                 <input class="input1" id = "postName" type="text" name="name" placeholder="Введите название вашего поста:" required minlength="8"></input>
+                <span class="error" aria-live="polite"></span>
                 <input class="input1" id = "postDescription" type="text" name="description" placeholder="Введите текст вашего поста:" required minlength="12"></input>
                 <span class="error" aria-live="polite"></span>
                 <button class="addButton" type="add" id="create" name="createPost" onclick="createPost();"></button>
