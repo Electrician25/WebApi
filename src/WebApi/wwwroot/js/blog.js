@@ -1,4 +1,4 @@
-﻿rendersBlogPage();
+﻿deleteFunction();
 
 function sendPostRequest(json, uri) {
     const myHeaders = new Headers()
@@ -107,4 +107,15 @@ async function deletesBlogFunction(blogId) {
 function updatesBlogPageFunction(blogId) {
     document.getElementById('update')
     addEventListener('click', () => location = `https://localhost:7299/api/html/updateBlog?id=${blogId}`);
+}
+
+function deleteFunction(){
+    let myNode = document.getElementById('blogsHolder');
+
+    while(myNode.firstChild)
+    {
+        myNode.removeChild(myNode.firstChild);
+    }
+
+    rendersBlogPage();
 }
