@@ -13,10 +13,11 @@
         <div class = "header">
         <div class="nav">
             <ui>
-                <input class="input1" id = "blogName" type="text" name="name" placeholder="Редактировать: Название вашего поста:"></input>
-                <input class="input1" id = "postDescription" type="text" name="description" placeholder="Редактировать: Тему вашего поста:"></input>
-                <button class="image-applybutton" type="add1" id="update" name="updatePost" onclick="updatePost();"></button>
+                <input class="input1" id = "postName" type="text" name="name" placeholder="Редактировать: Название вашего поста:"required minlength="8"></input>
                 <span class = "error" aria-live="polite"></span>
+                <input class="input1" id = "postDescription" type="text" name="description" placeholder="Редактировать: Тему вашего поста:"required minlength="12"></input>
+                <span class = "error" aria-live="polite"></span>
+                <button class="image-applybutton" type="add" id="update" name="updatePost" onclick="updatePost();"></button>
             </ui>
         </div>
     </div>
