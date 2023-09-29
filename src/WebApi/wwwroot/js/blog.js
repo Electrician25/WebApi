@@ -1,4 +1,5 @@
-﻿deleteFunction();
+﻿hidesBlogElement();
+
 
 function sendPostRequest(json, uri) {
     const myHeaders = new Headers()
@@ -50,7 +51,6 @@ function sendDeleteBlogRequest(uri) {
 }
 
 async function rendersBlogPage() {
-    
     let blogs = await sendGetBlogRequest("https://localhost:7299/api/blogs");
     for(let i = 0; i < blogs.length; i++)
     { 
@@ -68,6 +68,8 @@ function createsBlogElementOnPage(blog){
     let author = "Author: " + blog.blogAuthor + ". ";
     let name = "Blog name: " + blog.blogName;
     blogElement.className = "blog";
+    blogElement.id = "blogElementId"
+    blogElement.attributes = "hh";
     blogElement.append(author);
     blogElement.append(name);
     document.getElementById("blogsHolder").append(blogElement);
@@ -96,24 +98,21 @@ function createsBlogPageFunction() {
 }
 
 async function deletesBlogFunction(blogId) {
-    let blogsId = await sendDeleteBlogRequest(`https://localhost:7299/api/blogs/${blogId}`);
-    document.getElementById("blogsHolder").remove(blogsId);
+    await sendDeleteBlogRequest(`https://localhost:7299/api/blogs/${blogId}`);
 
-    location.reload();
+    hidesBlogElement();
 }
 
 function updatesBlogPageFunction(blogId) {
     document.getElementById('update')
     addEventListener('click', () => location = `https://localhost:7299/api/html/updateBlog?id=${blogId}`);
+
+    hidesBlogElement();
 }
 
-function deleteFunction(){
-    let myNode = document.getElementById('blogsHolder');
-
-    while(myNode.firstChild)
-    {
-        myNode.removeChild(myNode.firstChild);
-    }
+function hidesBlogElement(){
+    let blogsHolder = document.getElementById("blogsHolder");
+    blogsHolder.innerHTML = "";
 
     rendersBlogPage();
 }

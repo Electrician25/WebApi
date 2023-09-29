@@ -86,12 +86,18 @@ function buttonUpdates(postId){
     document.getElementById('update')
     addEventListener('click', () => location = `https://localhost:7299/api/html/updatePost?id=${postId}-${findsCurrentPostId()}`);
 
-    location.reload();
+    hidesPostElement();
 }
 
 async function buttonDeletes(postId){
-    let post = await sendDeleteRequest(`https://localhost:7299/api/posts/${postId}`);
-    document.getElementById("postsHolder").remove(post);
+    await sendDeleteRequest(`https://localhost:7299/api/posts/${postId}`);
 
-    location.reload();
+    hidesPostElement();
+}
+
+function hidesPostElement(){
+    let postHolder = document.getElementById("postsHolder");
+    postHolder.innerHTML = "";
+
+    rendersPostPage();
 }
