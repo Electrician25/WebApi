@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Transactions;
 using WebApi.Entities;
 
 namespace WebApi.Data
@@ -16,9 +17,18 @@ namespace WebApi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Post>()
+                .HasIndex(b => b.PostName)
+                .IsUnique();
+
+            modelBuilder.Entity<Blog>()
+                .HasIndex(b => b.BlogName)
+                .IsUnique();
+
+            modelBuilder.Entity<Post>()
                .HasOne(p => p.Blog)
                .WithMany(c => c.Post)
                .OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.Entity<Blog>().HasData(
             new Blog[]
@@ -42,6 +52,11 @@ namespace WebApi.Data
                     BlogId = 3,
                     BlogAuthor = "Alex Binner",
                     BlogName = ".NET 7 VERSION",
+                },
+                 new () {
+                    BlogId = 4,
+                    BlogAuthor = "Alex Binner",
+                    BlogName = "rrrrrr",
                 },
            });
 
@@ -77,14 +92,14 @@ namespace WebApi.Data
                  new () {
                     PostId = 4,
                     BlogId = 3,
-                    PostName = ".NET_7",
+                    PostName = ".NET_71",
                     PostDescription = "Производительность является ключевым моментом .NET 7, и все ее функции разработаны с учетом производительности. Кроме того, .NET 7 включает следующие улучшения, направленные исключительно на повышение производительности:\r\n\r\nЗамена в стеке (OSR) является дополнением к многоуровневой компиляции. Это позволяет среде выполнения изменять код, выполняемый текущим методом, в середине его выполнения (то есть, пока он находится «в стеке»). Длительно работающие методы могут переключаться на более оптимизированные версии в середине выполнения.\r\nОптимизация на основе профиля (PGO) теперь работает с OSR, и ее легче включить (путем добавления <TieredPGO>true</TieredPGO>в файл проекта). PGO также может инструментировать и оптимизировать дополнительные вещи, такие как делегаты.",
                 },
 
                  new () {
                     PostId = 5,
                     BlogId = 3,
-                    PostName = ".NET_7",
+                    PostName = ".NET_72",
                     PostDescription = "Производительность является ключевым моментом .NET 7, и все ее функции разработаны с учетом производительности. Кроме того, .NET 7 включает следующие улучшения, направленные исключительно на повышение производительности:\r\n\r\nЗамена в стеке (OSR) является дополнением к многоуровневой компиляции. Это позволяет среде выполнения изменять код, выполняемый текущим методом, в середине его выполнения (то есть, пока он находится «в стеке»). Длительно работающие методы могут переключаться на более оптимизированные версии в середине выполнения.\r\nОптимизация на основе профиля (PGO) теперь работает с OSR, и ее легче включить (путем добавления <TieredPGO>true</TieredPGO>в файл проекта). PGO также может инструментировать и оптимизировать дополнительные вещи, такие как делегаты.",
                 },
             });

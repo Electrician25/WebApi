@@ -50,11 +50,6 @@ function sendPostRequest(json, uri) {
     return search_result;
 }
 
-function changesLocation(){
-    document.getElementById('create')
-    .addEventListener('click', () => window.history.back());
-}
-
 function findsCurrentPostId(){
     let splitOnPostId = window.location.href.split('=');
     let postId = splitOnPostId[1];
@@ -71,12 +66,12 @@ const listResponses = [];
 
 postDescription.addEventListener("input", function (event) 
 {
-    let test = postDescription.validity.valid;
-    listResponses[0] = test;
-    if (test) {
+    let isValid = postDescription.validity.valid;
+    listResponses[0] = isValid;
+    if (isValid) {
         descriptionError.textContent = "";
         descriptionError.className = "error";
-        Test();
+        UnlockButton();
     } 
 
     else{
@@ -86,12 +81,12 @@ postDescription.addEventListener("input", function (event)
 
 postName.addEventListener("input", function (event) 
 {
-    let test1 = postName.validity.valid;
-    listResponses[1] = test1;
-    if (test1) {
+    let isValid = postName.validity.valid;
+    listResponses[1] = isValid;
+    if (isValid) {
         nameError.textContent = "";
         nameError.className = "error";
-        Test();
+        UnlockButton();
     } 
 
     else {
@@ -99,7 +94,7 @@ postName.addEventListener("input", function (event)
     }
 });
 
-function Test(){
+function UnlockButton(){
     if(listResponses[0] == true && listResponses[1] == true)
     {
         document.getElementById("create").disabled = false;  

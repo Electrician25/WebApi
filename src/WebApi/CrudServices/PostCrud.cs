@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using WebApi.Data;
 using WebApi.Entities;
 
@@ -15,6 +16,23 @@ namespace WebApi.CrudServices
 
         public Post AddsNewPost(Post post)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    if (!_applicationContext.Posts.Any(e => e.PostName == post.PostName))
+            //    {
+            //        _applicationContext.Posts.Add(post);
+            //        _applicationContext.SaveChanges();
+            //    }
+
+            //    else
+            //    {
+            //        post.PostDescription = "descriptionAlreadyExist";
+            //        post.PostName = "nameAlreadyExist";
+            //    }
+            //}
+
+            //return post;
+
             _applicationContext.Posts.Add(post);
             _applicationContext.SaveChanges();
 
