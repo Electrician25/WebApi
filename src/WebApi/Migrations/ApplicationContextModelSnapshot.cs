@@ -31,14 +31,15 @@ namespace WebApi.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("BlogId"));
 
                     b.Property<string>("BlogAuthor")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("BlogName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("BlogId");
+
+                    b.HasIndex("BlogName")
+                        .IsUnique();
 
                     b.ToTable("Blogs");
 
@@ -66,6 +67,12 @@ namespace WebApi.Migrations
                             BlogId = 3,
                             BlogAuthor = "Alex Binner",
                             BlogName = ".NET 7 VERSION"
+                        },
+                        new
+                        {
+                            BlogId = 4,
+                            BlogAuthor = "Alex Binner",
+                            BlogName = "rrrrrr"
                         });
                 });
 
@@ -81,16 +88,17 @@ namespace WebApi.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("PostDescription")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("PostId");
 
                     b.HasIndex("BlogId");
+
+                    b.HasIndex("PostName")
+                        .IsUnique();
 
                     b.ToTable("Posts");
 
@@ -128,14 +136,14 @@ namespace WebApi.Migrations
                             PostId = 4,
                             BlogId = 3,
                             PostDescription = "Производительность является ключевым моментом .NET 7, и все ее функции разработаны с учетом производительности. Кроме того, .NET 7 включает следующие улучшения, направленные исключительно на повышение производительности:\r\n\r\nЗамена в стеке (OSR) является дополнением к многоуровневой компиляции. Это позволяет среде выполнения изменять код, выполняемый текущим методом, в середине его выполнения (то есть, пока он находится «в стеке»). Длительно работающие методы могут переключаться на более оптимизированные версии в середине выполнения.\r\nОптимизация на основе профиля (PGO) теперь работает с OSR, и ее легче включить (путем добавления <TieredPGO>true</TieredPGO>в файл проекта). PGO также может инструментировать и оптимизировать дополнительные вещи, такие как делегаты.",
-                            PostName = ".NET_7"
+                            PostName = ".NET_71"
                         },
                         new
                         {
                             PostId = 5,
                             BlogId = 3,
                             PostDescription = "Производительность является ключевым моментом .NET 7, и все ее функции разработаны с учетом производительности. Кроме того, .NET 7 включает следующие улучшения, направленные исключительно на повышение производительности:\r\n\r\nЗамена в стеке (OSR) является дополнением к многоуровневой компиляции. Это позволяет среде выполнения изменять код, выполняемый текущим методом, в середине его выполнения (то есть, пока он находится «в стеке»). Длительно работающие методы могут переключаться на более оптимизированные версии в середине выполнения.\r\nОптимизация на основе профиля (PGO) теперь работает с OSR, и ее легче включить (путем добавления <TieredPGO>true</TieredPGO>в файл проекта). PGO также может инструментировать и оптимизировать дополнительные вещи, такие как делегаты.",
-                            PostName = ".NET_7"
+                            PostName = ".NET_72"
                         });
                 });
 

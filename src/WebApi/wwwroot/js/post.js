@@ -34,13 +34,13 @@ function sendDeleteRequest(uri) {
 
 async function rendersPostPage() {    
     let postRequest = await sendGetRequest(`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
-    buttonCreatesPost(findsCurrentPostId());
+    createPostPageFunction(findsCurrentPostId());
     for(let i = 0; i < postRequest.length; i++)
     {
         let post = postRequest[i];
         createsBlogElementOnPage(post);
-        updatesPost().addEventListener('click', () => buttonUpdates(post.postId));
-        deletesPost().addEventListener('click', () => buttonDeletes(post.postId));
+        updatesPost().addEventListener('click', () => updatePostPageFunction(post.postId));
+        deletesPost().addEventListener('click', () => deletePostFunction(post.postId));
     }
 }
 
@@ -77,19 +77,19 @@ function findsCurrentPostId(){
     return postId;
 }
 
-function buttonCreatesPost(postId){
+function createPostPageFunction(postId){
     document.getElementById('create')
     .addEventListener('click', () => location = `https://localhost:7299/api/html/createPost?id=${postId}`);
 }
 
-function buttonUpdates(postId){
+function updatePostPageFunction(postId){
     document.getElementById('update')
     addEventListener('click', () => location = `https://localhost:7299/api/html/updatePost?id=${postId}-${findsCurrentPostId()}`);
 
     hidesPostElement();
 }
 
-async function buttonDeletes(postId){
+async function deletePostFunction(postId){
     await sendDeleteRequest(`https://localhost:7299/api/posts/${postId}`);
 
     hidesPostElement();
