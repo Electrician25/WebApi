@@ -1,10 +1,24 @@
+const postDescription = document.getElementById("blogAuthor");
+const descriptionError = document.querySelector("#blogAuthor + span.error");
+
+const postName = document.getElementById("blogName");
+const nameError = document.querySelector("#blogName + span.error");
+
 const updateBlog = async () => {
     let json = JSON.stringify({
     blogName: document.getElementById("blogName").value,
     blogAuthor: document.getElementById("blogAuthor").value,
     });
-    await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
-    changePage();
+    let request = await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
+    let split = request.split(",");
+    let split2 = split[2].split(":");
+    if(split2[1] == "\"ТакойБлогУжеЕсть\""){
+        nameError.textContent = "Блог с таким названием или темой уже существует!";
+        document.getElementById("update").disabled = true;
+    }
+    else{
+        changePage();
+    }
 }
 
 function sendPutRequest(json, uri) {
@@ -34,13 +48,6 @@ function blogId(){
     let blogId = currentLocation[1];
     return blogId;
 }
-
-
-const postDescription = document.getElementById("blogAuthor");
-const descriptionError = document.querySelector("#blogAuthor + span.error");
-
-const postName = document.getElementById("blogName");
-const nameError = document.querySelector("#blogName + span.error");
 
 const listResponses = [];
 

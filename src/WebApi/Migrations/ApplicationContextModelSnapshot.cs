@@ -33,6 +33,9 @@ namespace WebApi.Migrations
                     b.Property<string>("BlogAuthor")
                         .HasColumnType("text");
 
+                    b.Property<string>("BlogExeption")
+                        .HasColumnType("text");
+
                     b.Property<string>("BlogName")
                         .HasColumnType("text");
 
@@ -88,6 +91,9 @@ namespace WebApi.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("PostDescription")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PostExeption")
                         .HasColumnType("text");
 
                     b.Property<string>("PostName")

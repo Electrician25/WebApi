@@ -9,6 +9,7 @@ namespace WebApi.Entities
         public int? PostId { get; set; }
         public string? PostName { get; set; }
         public string? PostDescription { get; set; } 
+        public string? PostExeption { get; set; }
         public int? BlogId { get; set; }
         public Blog? Blog { get; set; } 
     }
