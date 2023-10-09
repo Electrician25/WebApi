@@ -1,6 +1,5 @@
 ﻿hideBlogElement();
 
-
 function sendPostRequest(json, uri) {
     const myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
@@ -69,7 +68,6 @@ function createBlogElementOnPage(blog){
     let name = "Blog name: " + blog.blogName;
     blogElement.className = "blog";
     blogElement.id = "blogElementId"
-    blogElement.attributes = "hh";
     blogElement.append(author);
     blogElement.append(name);
     document.getElementById("blogsHolder").append(blogElement);

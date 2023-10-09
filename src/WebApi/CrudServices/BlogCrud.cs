@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Entities;
 
 namespace WebApi.CrudServices
 {
-    public class BlogCrud : ControllerBase
+    public class BlogCrud : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         private readonly ApplicationContext _applicationContext;
 
@@ -15,13 +14,15 @@ namespace WebApi.CrudServices
         }
         public Blog AddsNewBlog(Blog newBlog)
         {
-            if (newBlog == null)
-            {
-                throw new Exception($"Blog id: {newBlog} is not found");
-            }
-
             _applicationContext.Blogs.Add(newBlog);
-            _applicationContext.SaveChanges();
+            try 
+            {
+                _applicationContext.SaveChanges();
+            }
+            catch (Exception ex) 
+            {
+                newBlog.BlogExeption = "ТакойБлогУжеЕсть";
+            }
 
             return newBlog;
         }
@@ -54,7 +55,16 @@ namespace WebApi.CrudServices
 
             currentBlog.BlogName = newBlog.BlogName;
             currentBlog.BlogAuthor = newBlog.BlogAuthor;
-            _applicationContext.SaveChanges();
+            try 
+            {
+                currentBlog.BlogExeption = null;
+                _applicationContext.SaveChanges();
+            }
+            
+            catch(Exception ex) 
+            {
+                currentBlog.BlogExeption = "ТакойБлогУжеЕсть";
+            }
 
             return currentBlog;
         }

@@ -1,10 +1,26 @@
+const postName = document.getElementById("postName");
+const nameError = document.querySelector("#postName + span.error");
+
+
+const postDescription = document.getElementById("postDescription");
+const descriptionError = document.querySelector("#postDescription + span.error");
+
 const updatePost = async () => {
     let json = JSON.stringify({
         postName: document.getElementById("postName").value,
         postDescription: document.getElementById("postDescription").value,
     });
-    await sendPutRequest(json,`https://localhost:7299/api/posts/${postId()}`);
-    changePage();
+    let request = await sendPutRequest(json,`https://localhost:7299/api/posts/${postId()}`);
+    let split = request.split(",");
+    let split2 = split[3].split(":");
+    console.log(split2[1]);
+    if(split2[1] == "\"ТакойПостУжеЕсть\""){
+       nameError.textContent = "Пост с таким названием или темой уже существует!";
+        document.getElementById("update").disabled = true;
+    }
+    else{
+        changePage();
+    }
 }
 
 function sendPutRequest(json, uri) {
@@ -37,12 +53,6 @@ function postId(){
     let postId = test[0];
     return postId;
 }
-
-const postDescription = document.getElementById("postDescription");
-const descriptionError = document.querySelector("#postDescription + span.error");
-document.getElementById("update").disabled = true;
-const postName = document.getElementById("postName");
-const nameError = document.querySelector("#postName + span.error");
 
 const listResponses = [];
 

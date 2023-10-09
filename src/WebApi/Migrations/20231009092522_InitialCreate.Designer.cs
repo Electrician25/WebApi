@@ -12,7 +12,7 @@ using WebApi.Data;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20231004132321_InitialCreate")]
+    [Migration("20231009092522_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,6 +34,9 @@ namespace WebApi.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("BlogId"));
 
                     b.Property<string>("BlogAuthor")
+                        .HasColumnType("text");
+
+                    b.Property<string>("BlogExeption")
                         .HasColumnType("text");
 
                     b.Property<string>("BlogName")
@@ -91,6 +94,9 @@ namespace WebApi.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("PostDescription")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PostExeption")
                         .HasColumnType("text");
 
                     b.Property<string>("PostName")

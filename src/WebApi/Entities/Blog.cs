@@ -10,6 +10,7 @@ namespace WebApi.Entities
     {
         public int? BlogId { get; set; }
         public string? BlogName { get; set; }
+        public string? BlogExeption { get; set; }
         public string? BlogAuthor { get; set; }
 
         [JsonIgnore]

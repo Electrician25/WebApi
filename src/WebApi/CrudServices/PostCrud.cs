@@ -16,25 +16,17 @@ namespace WebApi.CrudServices
 
         public Post AddsNewPost(Post post)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    if (!_applicationContext.Posts.Any(e => e.PostName == post.PostName))
-            //    {
-            //        _applicationContext.Posts.Add(post);
-            //        _applicationContext.SaveChanges();
-            //    }
-
-            //    else
-            //    {
-            //        post.PostDescription = "descriptionAlreadyExist";
-            //        post.PostName = "nameAlreadyExist";
-            //    }
-            //}
-
-            //return post;
-
             _applicationContext.Posts.Add(post);
-            _applicationContext.SaveChanges();
+
+            try 
+            {
+                _applicationContext.SaveChanges();
+            }
+
+            catch (Exception ex) 
+            {
+                post.PostExeption = "ТакойПостУжеЕсть";
+            }
 
             return post;
         }
@@ -60,15 +52,18 @@ namespace WebApi.CrudServices
         {
             var newPost = _applicationContext.Posts.FirstOrDefault(p => p.PostId == postId);
 
-            if (newPost == null)
-            {
-                throw new Exception($"Post id: {newPost} not foud");
-            }
-
             newPost.PostName = post.PostName;
             newPost.PostDescription = post.PostDescription;
-            _applicationContext.SaveChanges();
-
+            try
+            {
+                newPost.PostExeption = null;
+                _applicationContext.SaveChanges();
+            }
+            
+            catch(Exception ex) 
+            {
+                newPost.PostExeption = "ТакойПостУжеЕсть";
+            }
             return newPost;
         }
 

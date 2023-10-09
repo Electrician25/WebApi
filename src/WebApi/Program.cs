@@ -19,6 +19,8 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseStatusCodePages();
+
 app.UseAuthorization();
 
 app.UseDefaultFiles();

@@ -1,11 +1,25 @@
+const postDescription = document.getElementById("postDescription");
+const descriptionError = document.querySelector("#postDescription + span.error");
+
+const postName = document.getElementById("postName");
+const nameError = document.querySelector("#postName + span.error");
+
 const createPost = async () => {
     let json = JSON.stringify({
         postName: document.getElementById("postName").value,
         postDescription: document.getElementById("postDescription").value,
         blogId: findsCurrentPostId()
     });
-    await sendPostRequest(json,`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
-    changesLocation();
+
+    let request  = await sendPostRequest(json,`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
+
+    if(request.postExeption == "ТакойПостУжеЕсть"){
+        nameError.textContent = "Пост с таким названием или темой уже существует!";
+        document.getElementById("create").disabled = true;
+    }
+    else{
+        changesLocation();
+    }
 }
 function sendPostRequest(json, uri) {
     const myHeaders = new Headers()
@@ -55,12 +69,6 @@ function findsCurrentPostId(){
     let postId = splitOnPostId[1];
     return postId;
 }
-
-const postDescription = document.getElementById("postDescription");
-const descriptionError = document.querySelector("#postDescription + span.error");
-
-const postName = document.getElementById("postName");
-const nameError = document.querySelector("#postName + span.error");
 
 const listResponses = [];
 
