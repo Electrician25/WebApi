@@ -1,5 +1,6 @@
 using StorageAPI.Extensions;
 using WebApi.ActionResult;
+using WebApi.Data;
 using WebApi.ServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 builder.AddApplicationContext();
 builder.Services.AddRouting();
+
 builder.Services.AddTransient(provider =>
 {
     return new Func<string, HtmlResult>(

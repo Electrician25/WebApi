@@ -11,40 +11,40 @@ namespace WebApi.Controllers
         private readonly PostCrud _postCrudService;
 
         public PostsController(PostCrud postCrudService)
-        { 
+        {
             _postCrudService = postCrudService;
         }
 
         [HttpPost]
         [Route("{id}")]
-        public ActionResult<Post> Add(Post post)
+        public ActionResult<Errors<Exception, object>> Add(Post post)
         {
             return _postCrudService.AddsNewPost(post);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Post[]> Get(int id)
+        public ActionResult<Errors<Exception, object>> Get(int id)
         {
             return _postCrudService.GetsPostById(id);
         }
 
         [HttpGet]
-        public ActionResult<Post[]> GetAll()
+        public ActionResult<Errors<Exception, object>> GetAll()
         {
             return _postCrudService.GetsAllPosts();
         }
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult<Post> Update(int id,Post post)
+        public ActionResult<Errors<Exception, object>> Update(int id, Post post)
         {
-            return _postCrudService.UpdatesPostById(id,post);
+            return _postCrudService.UpdatesPostById(id, post);
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public ActionResult<Post> Delete(int id)
+        public ActionResult<Errors<Exception, object>> Delete(int id)
         {
             return _postCrudService.DeletesPostById(id);
         }

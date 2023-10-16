@@ -16,34 +16,34 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Blog> AddsBlog(Blog blog)
+        public ActionResult<Errors<Exception,object>> AddsBlog(Blog blog)
         {
             return _blogCrudService.AddsNewBlog(blog);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Blog> GetsBlog(int id)
+        public ActionResult<Errors<Exception, object>> GetsBlog(int id)
         { 
             return _blogCrudService.GetsBlogById(id);
         }
 
         [HttpGet]
-        public ActionResult<Blog[]> GetsBlogs()
+        public ActionResult<Errors<Exception, object>> GetsBlogs()
         {
             return _blogCrudService.GetsAllBlogs();
         }
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult<Blog> UpdatesBlog(int id,Blog blog) 
+        public ActionResult<Errors<Exception, object>> UpdatesBlog(int id,Blog blog) 
         {
             return _blogCrudService.UpdatesBlogById(id,blog);
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public ActionResult<Blog> Delete(int id) 
+        public ActionResult<Errors<Exception, object>> Delete(int id) 
         {
             return _blogCrudService.DeleteBlog(id);
         }

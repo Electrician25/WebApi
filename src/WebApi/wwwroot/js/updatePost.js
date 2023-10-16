@@ -1,7 +1,6 @@
 const postName = document.getElementById("postName");
 const nameError = document.querySelector("#postName + span.error");
 
-
 const postDescription = document.getElementById("postDescription");
 const descriptionError = document.querySelector("#postDescription + span.error");
 
@@ -10,14 +9,17 @@ const updatePost = async () => {
         postName: document.getElementById("postName").value,
         postDescription: document.getElementById("postDescription").value,
     });
+
     let request = await sendPutRequest(json,`https://localhost:7299/api/posts/${postId()}`);
-    let split = request.split(",");
-    let split2 = split[3].split(":");
-    console.log(split2[1]);
-    if(split2[1] == "\"ТакойПостУжеЕсть\""){
-       nameError.textContent = "Пост с таким названием или темой уже существует!";
+    console.log(request);
+    let split = request.split("postExeption");
+    let splitExeption = split[1].split(",");
+
+    if(splitExeption[0] == "\":\"ТакойПостУжеЕсть\""){
+        descriptionError.textContent = "Пост с таким названием или темой уже существует!";
         document.getElementById("update").disabled = true;
     }
+
     else{
         changePage();
     }
@@ -104,7 +106,7 @@ function showsErrorsOnDescriptionInputForm() {
     document.getElementById("update").disabled = true;
     }
 
-    if(postDescription.length == 0){
+    if(postDescription.length == 0) {
         document.getElementById("update").disabled = true;
     }
     descriptionError.className = "error active";

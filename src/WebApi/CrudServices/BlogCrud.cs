@@ -1,83 +1,104 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Entities;
 
 namespace WebApi.CrudServices
 {
-    public class BlogCrud : Microsoft.AspNetCore.Mvc.ControllerBase
+    public class BlogCrud : ControllerBase
     {
         private readonly ApplicationContext _applicationContext;
+        Errors<Exception, object> _errors;
 
-        public BlogCrud(ApplicationContext applicationContext)
+        public BlogCrud(ApplicationContext applicationContext, Errors<Exception,object>  errors)
         {
             _applicationContext = applicationContext;
+            _errors = errors;
         }
-        public Blog AddsNewBlog(Blog newBlog)
+
+        public Errors<Exception, object> AddsNewBlog(Blog newBlog)
         {
-            _applicationContext.Blogs.Add(newBlog);
             try 
             {
+                _applicationContext.Blogs.Add(newBlog);
+                _errors.ErrorData = newBlog;
                 _applicationContext.SaveChanges();
             }
-            catch (Exception ex) 
+            catch (Exception exception) 
             {
-                newBlog.BlogExeption = "ТакойБлогУжеЕсть";
+                _errors.Error = exception.InnerException;
             }
 
-            return newBlog;
+            return _errors;
         }
 
-        public Blog[] GetsAllBlogs()
+        public Errors<Exception,object> GetsAllBlogs()
         {
-            return _applicationContext.Blogs.ToArray();
-        }
-
-        public Blog GetsBlogById(int blogId)
-        {
-            var blog = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == blogId);
-
-            if (blog == null)
+            try 
             {
-                throw new Exception($"Blog id: {blog} is not found");
+                _errors.ErrorData = _applicationContext.Blogs.ToArray();
             }
 
-            return blog;
+            catch (Exception exception) 
+            {
+                _errors.Error = exception;   
+            }
+
+            return _errors;
         }
 
-        public Blog UpdatesBlogById(int blogId, Blog newBlog)
+        public Errors<Exception, object> GetsBlogById(int blogId)
+        {
+            try 
+            {
+                var blog = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == blogId);
+                _errors.ErrorData = blog;
+            }
+
+            catch (Exception exception)
+            {
+                _errors.Error = exception;
+            }
+
+            return _errors;
+        }
+
+        public Errors<Exception,object> UpdatesBlogById(int blogId, Blog newBlog)
         {
             var currentBlog = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == blogId);
 
-            if (currentBlog == null)
-            {
-                throw new Exception($"Blog id: {currentBlog} is not found");
-            }
-
-            currentBlog.BlogName = newBlog.BlogName;
-            currentBlog.BlogAuthor = newBlog.BlogAuthor;
             try 
             {
-                currentBlog.BlogExeption = null;
+                currentBlog.BlogName = newBlog.BlogName;
+                currentBlog.BlogAuthor = newBlog.BlogAuthor;
+                _errors.ErrorData = currentBlog;
                 _applicationContext.SaveChanges();
             }
             
-            catch(Exception ex) 
+            catch(Exception exception) 
             {
-                currentBlog.BlogExeption = "ТакойБлогУжеЕсть";
+                _errors.Error = exception.InnerException;
             }
 
-            return currentBlog;
+            return _errors;
         }
 
-        public Blog DeleteBlog(int blogId)
+        public Errors<Exception,object> DeleteBlog(int blogId)
         {
-            var blog = _applicationContext.Blogs.Where(e => e.BlogId == blogId).Include(e => e.Post).First()
-               ?? throw new Exception();
+            var blog = _applicationContext.Blogs.Where(e => e.BlogId == blogId).Include(e => e.Post).First();
+            try
+            {
+                _errors.ErrorData = blog;
+                _applicationContext.Remove(blog);
+                _applicationContext.SaveChanges();
+            }
 
-            _applicationContext.Remove(blog);
-            _applicationContext.SaveChanges();
+            catch (Exception exception)
+            {
+                _errors.Error = exception;
+            }
 
-            return blog;
+            return _errors;
         }
     }
 }
