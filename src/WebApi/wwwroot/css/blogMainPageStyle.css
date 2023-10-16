@@ -127,3 +127,13 @@ body{
 .updateButton:active {
   transform: scale(0.95);
 }
+
+.noElementsOnPage{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 780px;
+  font-size: 1.6rem;
+  height: 35px;
+}

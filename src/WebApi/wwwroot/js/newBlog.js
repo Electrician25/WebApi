@@ -9,13 +9,11 @@ const createBlog = async () => {
     blogName: document.getElementById("blogName").value,
     blogAuthor: document.getElementById("blogAuthor").value,
     });
+
     let request = await sendPostRequest(json,"https://localhost:7299/api/blogs");
-    console.log(request.blogExeption);
-    if(request.blogExeption == "ТакойБлогУжеЕсть"){
-        nameError.textContent = "Блог с таким названием или темой уже существует!";
-        document.getElementById("addNewBlog").disabled = true;
-    }
-    else{
+    
+    if(request.error == null)
+    {
         changeLocation();
     }
 }
@@ -29,10 +27,21 @@ async function sendPostRequest(json, uri) {
         headers:myHeaders
     });
 
-    let search_result = await fetch(request)
+    let search_result;
+
+    try{
+        search_result = await fetch(request)
         .then((response) => {
             return response.json();
         });
+    }
+
+    catch{
+        console.log("ERROR!!!");
+        nameError.textContent = "Блог с таким названием или темой уже существует!";
+        document.getElementById("addNewBlog").disabled = true;
+    }
+        
     return search_result;
 }
 

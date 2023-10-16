@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.Xml;
 using System.Text.Json;
 using WebApi.Data;
 using WebApi.Entities;
@@ -8,78 +9,98 @@ namespace WebApi.CrudServices
     public class PostCrud : ControllerBase
     {
         private readonly ApplicationContext _applicationContext;
+        Errors<Exception, object> _errors;
 
-        public PostCrud(ApplicationContext applicatioContext)
+        public PostCrud(ApplicationContext applicatioContext, Errors<Exception, object> errors)
         {
             _applicationContext = applicatioContext;
+            _errors = errors;
         }
 
-        public Post AddsNewPost(Post post)
+        public Errors<Exception,object> AddsNewPost(Post post)
         {
-            _applicationContext.Posts.Add(post);
-
             try 
             {
+                _applicationContext.Posts.Add(post);
+                _errors.ErrorData = post;
                 _applicationContext.SaveChanges();
             }
 
-            catch (Exception ex) 
+            catch (Exception exception) 
             {
-                post.PostExeption = "ТакойПостУжеЕсть";
+                _errors.Error = exception; 
             }
 
-            return post;
+            return _errors;
         }
 
-        public Post[] GetsAllPosts()
+        public Errors<Exception, object> GetsAllPosts()
         {
-            return _applicationContext.Posts.ToArray();
-        }
-
-        public Post[] GetsPostById(int postId)
-        {
-            var post = _applicationContext.Blogs.Find(postId);
-
-            if (post == null)
-            {
-                throw new Exception($"Post id: {post} not foud");
-            }
-
-            return _applicationContext.Posts.Where(e => e.BlogId == postId).ToArray();
-        }
-
-        public Post UpdatesPostById(int postId, Post post) 
-        {
-            var newPost = _applicationContext.Posts.FirstOrDefault(p => p.PostId == postId);
-
-            newPost.PostName = post.PostName;
-            newPost.PostDescription = post.PostDescription;
             try
             {
-                newPost.PostExeption = null;
-                _applicationContext.SaveChanges();
+                _errors.ErrorData = _applicationContext.Posts.ToArray();
             }
-            
-            catch(Exception ex) 
+
+            catch (Exception exception)
             {
-                newPost.PostExeption = "ТакойПостУжеЕсть";
+                _errors.Error = exception;
             }
-            return newPost;
+
+            return _errors;
         }
 
-        public Post DeletesPostById(int postId)
+        public Errors<Exception, object> GetsPostById(int postId)
         {
-            var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == postId);
-
-            if (post == null)
+            try
             {
-                throw new Exception($"Post id: {post} not foud");
+                var post = _applicationContext.Blogs.Find(postId);
+                _errors.ErrorData = _applicationContext.Posts.Where(e => e.BlogId == postId).ToArray();
             }
 
-            _applicationContext.Posts.Remove(post);
-            _applicationContext.SaveChanges();
+            catch (Exception exception)
+            {
+                _errors.Error = exception;
+            }
 
-            return post;
+            return _errors;
+        }
+
+        public Errors<Exception, object> UpdatesPostById(int postId, Post post)
+        {
+            try 
+            {
+                var newPost = _applicationContext.Posts.FirstOrDefault(p => p.PostId == postId);
+
+                newPost.PostName = post.PostName;
+                newPost.PostDescription = post.PostDescription;
+                _errors.ErrorData = newPost;
+
+                _applicationContext.SaveChanges();
+            }
+
+            catch (Exception exception)
+            {
+                _errors.Error = exception;
+            }
+
+            return _errors;
+        }
+
+        public Errors<Exception, object>DeletesPostById(int postId)
+        {
+            try 
+            {
+                var post = _applicationContext.Posts.FirstOrDefault(p => p.PostId == postId);
+                _applicationContext.Posts.Remove(post);
+                _applicationContext.SaveChanges();
+            }
+
+            catch (Exception exception)
+            {
+                _errors.Error = exception;
+            }
+
+            return _errors;
         }
     }
 }

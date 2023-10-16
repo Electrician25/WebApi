@@ -34,13 +34,23 @@ function sendDeleteRequest(uri) {
 
 async function rendersPostPage() {    
     let postRequest = await sendGetRequest(`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
+    let allPosts = postRequest.errorData;
     createPostPageFunction(findsCurrentPostId());
-    for(let i = 0; i < postRequest.length; i++)
+    for(let i = 0; i < allPosts.length; i++)
     {
-        let post = postRequest[i];
+        let post = allPosts[i];
         createsBlogElementOnPage(post);
         updatesPost().addEventListener('click', () => updatePostPageFunction(post.postId));
         deletesPost().addEventListener('click', () => deletePostFunction(post.postId));
+    }
+
+    let noObject = document.getElementById("postElementId");
+    
+    if(noObject == null)
+    {
+        const nameError = document.querySelector("#postsHolder + span.noElementsOnPage");
+        nameError.textContent = "Элементы отсутствуют на странице";
+        nameError.className = "noElementsOnPage active";
     }
 }
 
@@ -49,6 +59,7 @@ function createsBlogElementOnPage(post) {
     let name = "Post name: " + post.postName + ". ";
     let description = "Post description: " + post.postDescription;
     newDiv.className = "post";
+    newDiv.id = "postElementId";
     newDiv.append(name);
     newDiv.append(description);
     document.getElementById("postsHolder").append(newDiv);

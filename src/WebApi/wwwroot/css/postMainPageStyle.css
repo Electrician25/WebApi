@@ -61,56 +61,66 @@ html, body{
     align-items: center;
   }
   
-  .createButton {
-    margin:0 7px;
-    width: 35px;
-    height: 35px;
-    border: none;
-    background-image: url('/image/addBlackButton.png');
-    background-size: cover;
-  }
+.createButton {
+  margin:0 7px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-image: url('/image/addBlackButton.png');
+  background-size: cover;
+}
   
-  .createButton:hover {
-    opacity: 0.8;
-  }
+.createButton:hover {
+  opacity: 0.8;
+}
   
-  .createButton:active {
-    transform: scale(0.95);
-  }
+.createButton:active {
+  transform: scale(0.95);
+}
   
-  .deleteButton {
-    display:table-cell;
-    vertical-align:middle;
-    margin: 4px 1px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-image: url('/image/deleteBlackButton.png');
-    background-size: cover;
-  }
+.deleteButton {
+  display:table-cell;
+  vertical-align:middle;
+  margin: 4px 1px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url('/image/deleteBlackButton.png');
+  background-size: cover;
+}
   
-  .deleteButton:hover {
-    opacity: 0.8;
-  }
+.deleteButton:hover {
+  opacity: 0.8;
+}
   
-  .deleteButton:active {
-    transform: scale(0.95);
-  }
+.deleteButton:active {
+  transform: scale(0.95);
+}
   
-  .updateButton {
-    display:table-cell;
-    vertical-align:middle;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-image: url('/image/updateBlackButton.png');
-    background-size: cover;
-  }
+.updateButton {
+  display:table-cell;
+  vertical-align:middle;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url('/image/updateBlackButton.png');
+  background-size: cover;
+}
   
-  .updateButton:hover {
-    opacity: 0.8;
-  }
+.updateButton:hover {
+  opacity: 0.8;
+}
   
-  .updateButton:active {
-    transform: scale(0.95);
-  }
+.updateButton:active {
+  transform: scale(0.95);
+}
+
+  .noElementsOnPage{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 780px;
+  font-size: 1.6rem;
+  height: 35px;
+}

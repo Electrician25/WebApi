@@ -9,13 +9,14 @@ const updateBlog = async () => {
     blogName: document.getElementById("blogName").value,
     blogAuthor: document.getElementById("blogAuthor").value,
     });
+
     let request = await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
-    let split = request.split(",");
-    let split2 = split[2].split(":");
-    if(split2[1] == "\"ТакойБлогУжеЕсть\""){
+    if(request.length > 1000)
+    {
         nameError.textContent = "Блог с таким названием или темой уже существует!";
         document.getElementById("update").disabled = true;
     }
+    
     else{
         changePage();
     }
@@ -41,7 +42,7 @@ function sendPutRequest(json, uri) {
 function changePage(){
     document.getElementById('update')
     .addEventListener('click', () => location = 'https://localhost:7299/api/html/writeBlogs');
-} 
+}
 
 function blogId(){
     let currentLocation = window.location.href.split('=');
@@ -53,7 +54,6 @@ const listResponses = [];
 
 postDescription.addEventListener("input", function (event) 
 {
-    console.log("Заходит в postDescription");
     let test = postDescription.validity.valid;
     listResponses[0] = test;
     if (test) {

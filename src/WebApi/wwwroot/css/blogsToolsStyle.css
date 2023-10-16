@@ -33,7 +33,7 @@ html, body {
     font-size: 1.2rem;
     height: 35px;
 }
-  .nav  {
+  .nav {
     position: relative;
     display: flex;
     justify-content: center;
@@ -174,18 +174,18 @@ html, body {
     outline: none;
   }
   
-  .error {
-    width: 600px;
-    padding: 0;
+.error {
+  width: 600px;
+  padding: 0;
   
-    font-size: 80%;
-    color: white;
-    background-color: #900;
-    border-radius: 0 0 5px 5px;
-    display: flex;
-    box-sizing: border-box;
-  }
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  box-sizing: border-box;
+}
 
-  .error.active {
-    padding: 0.3em;
-  }
+.error.active {
+  padding: 0.3em;
+}

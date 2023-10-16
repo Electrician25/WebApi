@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace WebApi.Entities
 {
@@ -11,6 +12,8 @@ namespace WebApi.Entities
         public string? PostDescription { get; set; } 
         public string? PostExeption { get; set; }
         public int? BlogId { get; set; }
+
+        [JsonIgnore]
         public Blog? Blog { get; set; } 
     }
 }

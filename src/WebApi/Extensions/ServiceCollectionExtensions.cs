@@ -1,4 +1,5 @@
 ﻿using WebApi.CrudServices;
+using WebApi.Entities;
 
 namespace WebApi.ServiceCollectionExtensions
 {
@@ -7,7 +8,8 @@ namespace WebApi.ServiceCollectionExtensions
         public static IServiceCollection AddCategoryCrudServices(this IServiceCollection services)
         {
             services.AddTransient<BlogCrud>()
-                    .AddTransient<PostCrud>();
+                    .AddTransient<PostCrud>()
+                    .AddTransient<Errors<Exception,object>>();
 
             return services;
         }

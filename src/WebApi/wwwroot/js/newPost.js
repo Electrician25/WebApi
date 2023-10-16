@@ -12,16 +12,13 @@ const createPost = async () => {
     });
 
     let request  = await sendPostRequest(json,`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
+    console.log(request);
 
-    if(request.postExeption == "ТакойПостУжеЕсть"){
-        nameError.textContent = "Пост с таким названием или темой уже существует!";
-        document.getElementById("create").disabled = true;
-    }
-    else{
+    if(request.error == null){
         changesLocation();
     }
 }
-function sendPostRequest(json, uri) {
+async function sendPostRequest(json, uri) {
     const myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
     const request = new Request(uri, {
@@ -30,10 +27,20 @@ function sendPostRequest(json, uri) {
         headers:myHeaders
     });
     
-    let search_result = fetch(request)
+    let search_result;
+
+    try{
+        search_result = await fetch(request)
         .then((response) => {
-            return response.json()
-        })
+            return response.json();
+        });
+    }
+
+    catch{
+        console.log("ERROR!!!");
+        nameError.textContent = "Пост с таким названием или темой уже существует!";
+        document.getElementById("addNewPost").disabled = true;
+    }
     return search_result;
 }
 
@@ -45,28 +52,6 @@ function changesLocation(){
 function findsCurrentPostId(){
     let currentLocation = window.location.href.split('=');
     let postId = currentLocation[1];
-    return postId;
-}
-
-function sendPostRequest(json, uri) {
-    const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/json')
-    const request = new Request(uri, {
-        method: 'POST',
-        body: json,
-        headers:myHeaders
-    });
-    
-    let search_result = fetch(request)
-        .then((response) => {
-            return response.json()
-        })
-    return search_result;
-}
-
-function findsCurrentPostId(){
-    let splitOnPostId = window.location.href.split('=');
-    let postId = splitOnPostId[1];
     return postId;
 }
 
