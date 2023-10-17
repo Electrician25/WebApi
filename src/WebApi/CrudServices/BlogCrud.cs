@@ -77,7 +77,7 @@ namespace WebApi.CrudServices
             
             catch(Exception exception) 
             {
-                _errors.Error = exception.InnerException;
+                _errors.Error = exception;
             }
 
             return _errors;
