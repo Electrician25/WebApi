@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <link href = "/css/blogsToolsStyle.css" rel="stylesheet" type="text/css">
-</head>
-<body> 
-    <div class = "main">
-        <h1>Update blog:</h1>
-    </div>
-    
-    <div class="container">
-        <div class = "header">
-        <div class="nav">
-            <ui>
-                <input class="input1" id = "blogAuthor" type="text" name="author" placeholder="Редактировать: Ваше ФИО:"required minlength="6"></input>
-                <span class="error" aria-live="polite"></span>
-                <input class="input1" id = "blogName" type="text" name="name" placeholder="Редактировать: Название вашего блога:"required minlength="3"></input>
-                <span class="error" aria-live="polite"></span>
-                <button class="image-applybutton" type="add1" id="update" name="updateBlog" onclick="updateBlog();"></button>
-            </ui>
+    <head>
+        <meta charset="UTF-8">
+        <link href = "/css/blogsToolsStyle.css" rel="stylesheet" type="text/css">
+    </head>
+        <body> 
+        <div class = "main">
+            <h1>Update blog:</h1>
         </div>
-    </div>
-    </div>
-    <script src="/js/updateBlog.js"></script>
-</body>
+        <div class="container">
+            <div class = "header">
+                <div class="nav">
+                    <ui>
+                        <input class="input1" id = "blogAuthor" type="text" name="author" placeholder="Редактировать: Ваше ФИО:"required minlength="6"></input>
+                        <span class="error" aria-live="polite"></span>
+                        <input class="input1" id = "blogName" type="text" name="name" placeholder="Редактировать: Название вашего блога:"required minlength="3"></input>
+                        <span class="error" aria-live="polite"></span>
+                        <button class="image-applybutton" type="add1" id="update" name="updateBlog" onclick="updateBlog();"></button>
+                    </ui>
+                </div>
+            </div>
+        </div>
+        <script src="/js/catchErrors.js"></script>
+        <script src="/js/request.js"></script>
+        <script src="/js/updateBlog.js"></script>
+    </body>
 </html>

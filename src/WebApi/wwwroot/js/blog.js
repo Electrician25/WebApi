@@ -1,54 +1,5 @@
 ﻿hideBlogElement();
 
-function sendPostRequest(json, uri) {
-    const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/json')
-    const request = new Request(uri, {
-        method: 'PUT',
-        body: json,
-        headers:myHeaders
-    });
-    
-    let search_result = fetch(request)
-        .then((response) => {
-            return response.json()
-        })
-
-    return search_result;
-}
-
-function sendGetBlogRequest(uri) {
-   const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/json')
-    const request = new Request(uri, {
-        method: 'GET',
-        headers: myHeaders
-    });
-
-    let search_result = fetch(request)
-        .then((response) => {
-            return response.json();
-        })
-
-    return search_result;
-}
-
-function sendDeleteBlogRequest(uri) {
-    const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/json')
-    const request = new Request(uri, {
-        method: 'DELETE',
-        headers: myHeaders
-    });
- 
-    let search_result = fetch(request)
-        .then((response) => {
-            return response.json();
-        })
- 
-    return search_result;
-}
-
 async function renderBlogPage() {
     let blogReauest = await sendGetBlogRequest("https://localhost:7299/api/blogs");
     let allBlogs = blogReauest.errorData;

@@ -1,6 +1,7 @@
-const postDescription = document.getElementById("blogAuthor");
-const descriptionError = document.querySelector("#blogAuthor + span.error");
-
+const postAuthor = document.getElementById("blogAuthor");
+const authorError = document.querySelector("#blogAuthor + span.error");
+const buttonId = "update";
+const listResponses = [];
 const postName = document.getElementById("blogName");
 const nameError = document.querySelector("#blogName + span.error");
 
@@ -11,10 +12,10 @@ const updateBlog = async () => {
     });
 
     let request = await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
+    console.log(request);
     if(request.length > 1000)
     {
-        nameError.textContent = "Блог с таким названием или темой уже существует!";
-        document.getElementById("update").disabled = true;
+        findClones();
     }
     
     else{
@@ -22,22 +23,9 @@ const updateBlog = async () => {
     }
 }
 
-function sendPutRequest(json, uri) {
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-    const request = new Request(uri, {
-        method: 'PUT',
-        body: json,
-        headers:myHeaders
-    });
-    
-    let search_result = fetch(request)
-        .then((response) => {
-            return response.text()
-        });
-
-    return search_result;
-}
+showErrorFunction(postAuthor,authorError,listResponses,postName,nameError);
+showsErrorsOnTitleInputForm();
+showsErrorsOnPostNameForm();
 
 function changePage(){
     document.getElementById('update')
@@ -48,70 +36,4 @@ function blogId(){
     let currentLocation = window.location.href.split('=');
     let blogId = currentLocation[1];
     return blogId;
-}
-
-const listResponses = [];
-
-postDescription.addEventListener("input", function (event) 
-{
-    let test = postDescription.validity.valid;
-    listResponses[0] = test;
-    if (test) {
-        descriptionError.textContent = "";
-        descriptionError.className = "error";
-        Test();
-    } 
-
-    else{
-        showsErrorsOnDescriptionInputForm();
-    }
-});
-
-postName.addEventListener("input", function (event) 
-{
-    let test1 = postName.validity.valid;
-    listResponses[1] = test1;
-    if (test1) {
-        nameError.textContent = "";
-        nameError.className = "error";
-        Test();
-    } 
-
-    else {
-        showsErrorsOnPostNameForm();
-    }
-});
-
-function Test(){
-    if(listResponses[0] == true && listResponses[1] == true)
-    {
-        document.getElementById("update").disabled = false;  
-    }
-}
-
-function showsErrorsOnDescriptionInputForm() {
-    if (postDescription.validity.valueMissing) {
-    descriptionError.textContent = "Вам необходимо ввести название и имя поста";
-    document.getElementById("update").disabled = true;
-    } 
-
-    if (postDescription.validity.tooShort) {
-    descriptionError.textContent = `Текст вашего поста должен содержать хотя бы ${postDescription.minLength} символов, а вы ввели только ${postDescription.value.length}.`;
-    document.getElementById("update").disabled = true;
-    }
-    descriptionError.className = "error active";
-}
-
-function showsErrorsOnPostNameForm(){
-    if (postName.validity.valueMissing) {
-        nameError.textContent = "Вам необходимо ввести название и имя поста";
-        document.getElementById("update").disabled = true;
-    } 
-    
-    if (postName.validity.tooShort) {
-        nameError.textContent = `Текст вашего поста должен содержать хотя бы ${postName.minLength} символов, а вы ввели только ${postName.value.length}.`;
-        document.getElementById("update").disabled = true;
-    }
-
-    nameError.className = "error active";
 }
