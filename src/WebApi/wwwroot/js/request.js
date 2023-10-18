@@ -52,7 +52,6 @@ async function sendPutRequest(json, uri) {
         findClones();
     }
     
-
     return search_result;
 }
 
@@ -77,6 +76,6 @@ async function sendPostRequest(json, uri) {
     catch{
         findClones();
     }
-        
+    
     return search_result;
 }

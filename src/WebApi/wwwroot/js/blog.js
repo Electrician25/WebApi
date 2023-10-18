@@ -16,7 +16,7 @@ async function renderBlogPage() {
     if(noObject == null)
     {
         const nameError = document.querySelector("#blogsHolder + span.noElementsOnPage");
-        nameError.textContent = "Элементы отсутствуют на странице";
+        nameError.textContent = "Elements are missing from the page";
         nameError.className = "noElementsOnPage active";
     }
     createBlogPageFunction();

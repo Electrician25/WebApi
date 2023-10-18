@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <link href = "/css/postToolsStyle.css" rel="stylesheet" type="text/css">
 </head>
-<body> 
-    <div class = "main">
-        <h1>Update post:</h1>
-    </div>
-    
-    <div class="container">
-        <div class = "header">
-        <div class="nav">
-            <ui>
-                <input class="input1" id = "postName" type="text" name="name" placeholder="Редактировать: Название вашего поста:" required minlength="8" ></input>
-                <span class = "error" aria-live="polite"></span>
-                <input class="input1" id = "postDescription" type="text" name="description" placeholder="Редактировать: Тему вашего поста:" required minlength="12"></input>
-                <span class = "error" aria-live="polite"></span>
-                <button class="image-applybutton" type="add" id="update" name="updatePost" onclick="updatePost();"></button>
-            </ui>
+    <body> 
+        <div class = "main">
+            <h1>Update post:</h1>
         </div>
-    </div>
-    </div>
-    <script src="/js/updatePost.js"></script>
-</body>
+    
+        <div class="container">
+            <div class = "header">
+                <div class="nav">
+                    <ui>
+                        <input class="input1" id = "postName" type="text" name="name" placeholder="Редактировать: Название вашего поста:" required minlength="8" ></input>
+                        <span class = "error" aria-live="polite"></span>
+                        <input class="input1" id = "postDescription" type="text" name="description" placeholder="Редактировать: Тему вашего поста:" required minlength="12"></input>
+                        <span class = "error" aria-live="polite"></span>
+                        <button class="image-applybutton" type="add" id="update" name="updatePost" onclick="updatePost();"></button>
+                    </ui>
+                </div>
+            </div>
+        </div>
+        <script src="/js/catchErrors.js"></script>
+        <script src="/js/request.js"></script>
+        <script src="/js/updatePost.js"></script>
+    </body>
 </html>

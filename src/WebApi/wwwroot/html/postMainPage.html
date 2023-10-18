@@ -5,17 +5,19 @@
     <link href = "/css/postMainPageStyle.css" rel="stylesheet" type="text/css">
     
 </head>
-<body> 
-    <div class ="main" id="createPost">
-        <h1>Your posts:</h1>
-        <button class ="createButton" id = "create" onclick="createPostPageFunction()"></button>
-    </div>
-    <div class="container">
-        <div class = "header">
-            <div class="nav" id="postsHolder"></div>
-            <span class = "noElementsOnPage" aria-live="polite"></span>
+    <body> 
+        <div class ="main" id="createPost">
+            <h1>Your posts:</h1>
+            <button class ="createButton" id = "create" onclick="createPostPageFunction()"></button>
         </div>
-    </div>
-    <script src="/js/post.js"></script>
-</body>
+        <div class="container">
+            <div class = "header">
+                <div class="nav" id="postsHolder"></div>
+                <span class = "noElementsOnPage" aria-live="polite"></span>
+            </div>
+        </div>
+        <script src="/js/catchErrors.js"></script>
+        <script src="/js/request.js"></script>
+        <script src="/js/post.js"></script>
+    </body>
 </html>
