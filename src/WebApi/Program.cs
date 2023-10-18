@@ -1,6 +1,5 @@
 using StorageAPI.Extensions;
 using WebApi.ActionResult;
-using WebApi.Data;
 using WebApi.ServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);

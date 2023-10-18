@@ -11,13 +11,13 @@ const updateBlog = async () => {
     blogAuthor: document.getElementById("blogAuthor").value,
     });
 
-    let reques = await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
-    if(reques != undefined) {
+    let request = await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
+    if(request != undefined) {
         changeLocation();
     }
 }
 
-showErrorFunction(postAuthor,authorError,listResponses,postName,nameError);
+showIncorrectInputFunction(postAuthor,authorError,listResponses,postName,nameError);
 showsErrorsOnTitleInputForm();
 showsErrorsOnPostNameForm();
 

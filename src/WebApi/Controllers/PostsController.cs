@@ -19,34 +19,34 @@ namespace WebApi.Controllers
         [Route("{id}")]
         public ActionResult<Errors<Exception, object>> Add(Post post)
         {
-            return _postCrudService.AddsNewPost(post);
+            return _postCrudService.AddNewPost(post);
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<Errors<Exception, object>> Get(int id)
         {
-            return _postCrudService.GetsPostById(id);
+            return _postCrudService.GetPostById(id);
         }
 
         [HttpGet]
         public ActionResult<Errors<Exception, object>> GetAll()
         {
-            return _postCrudService.GetsAllPosts();
+            return _postCrudService.GetAllPosts();
         }
 
         [HttpPut]
         [Route("{id}")]
         public ActionResult<Errors<Exception, object>> Update(int id, Post post)
         {
-            return _postCrudService.UpdatesPostById(id, post);
+            return _postCrudService.UpdatePostById(id, post);
         }
 
         [HttpDelete]
         [Route("{id}")]
         public ActionResult<Errors<Exception, object>> Delete(int id)
         {
-            return _postCrudService.DeletesPostById(id);
+            return _postCrudService.DeletePostById(id);
         }
     }
 }
