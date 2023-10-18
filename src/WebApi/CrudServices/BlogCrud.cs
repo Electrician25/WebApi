@@ -16,7 +16,7 @@ namespace WebApi.CrudServices
             _errors = errors;
         }
 
-        public Errors<Exception, object> AddsNewBlog(Blog newBlog)
+        public Errors<Exception, object> AddNewBlog(Blog newBlog)
         {
             try 
             {
@@ -32,7 +32,7 @@ namespace WebApi.CrudServices
             return _errors;
         }
 
-        public Errors<Exception,object> GetsAllBlogs()
+        public Errors<Exception,object> GetAllBlogs()
         {
             try 
             {
@@ -47,7 +47,7 @@ namespace WebApi.CrudServices
             return _errors;
         }
 
-        public Errors<Exception, object> GetsBlogById(int blogId)
+        public Errors<Exception, object> GetBlogById(int blogId)
         {
             try 
             {
@@ -63,7 +63,7 @@ namespace WebApi.CrudServices
             return _errors;
         }
 
-        public Errors<Exception,object> UpdatesBlogById(int blogId, Blog newBlog)
+        public Errors<Exception,object> UpdateBlogById(int blogId, Blog newBlog)
         {
             var currentBlog = _applicationContext.Blogs.FirstOrDefault(b => b.BlogId == blogId);
 

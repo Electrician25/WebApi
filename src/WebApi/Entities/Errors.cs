@@ -1,5 +1,4 @@
-﻿
-namespace WebApi.Entities
+﻿namespace WebApi.Entities
 {
     public class Errors<Exception, T> 
     {

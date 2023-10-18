@@ -1,4 +1,4 @@
-function sendDeleteBlogRequest(uri) {
+function sendDeleteRequest(uri) {
     const myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
     const request = new Request(uri, {
@@ -14,7 +14,7 @@ function sendDeleteBlogRequest(uri) {
     return search_result;
 }
 
-function sendGetBlogRequest(uri) {
+function sendGetRequest(uri) {
     const myHeaders = new Headers()
      myHeaders.append('Content-Type', 'application/json')
      const request = new Request(uri, {

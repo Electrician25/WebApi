@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography.Xml;
-using System.Text.Json;
 using WebApi.Data;
 using WebApi.Entities;
 
@@ -17,7 +15,7 @@ namespace WebApi.CrudServices
             _errors = errors;
         }
 
-        public Errors<Exception,object> AddsNewPost(Post post)
+        public Errors<Exception,object> AddNewPost(Post post)
         {
             try 
             {
@@ -34,7 +32,7 @@ namespace WebApi.CrudServices
             return _errors;
         }
 
-        public Errors<Exception, object> GetsAllPosts()
+        public Errors<Exception, object> GetAllPosts()
         {
             try
             {
@@ -49,7 +47,7 @@ namespace WebApi.CrudServices
             return _errors;
         }
 
-        public Errors<Exception, object> GetsPostById(int postId)
+        public Errors<Exception, object> GetPostById(int postId)
         {
             try
             {
@@ -65,7 +63,7 @@ namespace WebApi.CrudServices
             return _errors;
         }
 
-        public Errors<Exception, object> UpdatesPostById(int postId, Post post)
+        public Errors<Exception, object> UpdatePostById(int postId, Post post)
         {
             try 
             {
@@ -86,7 +84,7 @@ namespace WebApi.CrudServices
             return _errors;
         }
 
-        public Errors<Exception, object>DeletesPostById(int postId)
+        public Errors<Exception, object>DeletePostById(int postId)
         {
             try 
             {

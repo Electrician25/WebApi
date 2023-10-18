@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Transactions;
 using WebApi.Entities;
 
 namespace WebApi.Data

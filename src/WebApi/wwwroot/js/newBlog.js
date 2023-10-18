@@ -17,7 +17,7 @@ const createBlog = async () => {
     }
 }
 
-showErrorFunction(postAuthor,authorError,listResponses,postName,nameError);
+showIncorrectInputFunction(postAuthor,authorError,listResponses,postName,nameError);
 showsErrorsOnTitleInputForm();
 showsErrorsOnPostNameForm();
 

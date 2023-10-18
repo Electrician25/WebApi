@@ -9,16 +9,16 @@ const createPost = async () => {
     let json = JSON.stringify({
         postName: document.getElementById("postName").value,
         postDescription: document.getElementById("postDescription").value,
-        blogId: findsCurrentPostId()
+        blogId: findCurrentPostId()
     });
 
-    let request  = await sendPostRequest(json,`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
+    let request  = await sendPostRequest(json,`https://localhost:7299/api/posts/${findCurrentPostId()}`);
     if(request != undefined) {
         changesLocation();
     }
 }
 
-showErrorFunction(postAuthor,authorError,listResponses,postName,nameError);
+showIncorrectInputFunction(postAuthor,authorError,listResponses,postName,nameError);
 showsErrorsOnTitleInputForm();
 showsErrorsOnPostNameForm();
 
@@ -28,7 +28,7 @@ function changesLocation(){
     .addEventListener('click', () => window.history.back());
 }
 
-function findsCurrentPostId(){
+function findCurrentPostId(){
     let currentLocation = window.location.href.split('=');
     let postId = currentLocation[1];
     return postId;

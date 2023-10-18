@@ -1,7 +1,7 @@
-﻿hideBlogElement();
+﻿renderElementsOnBlogPage();
 
 async function renderBlogPage() {
-    let blogReauest = await sendGetBlogRequest("https://localhost:7299/api/blogs");
+    let blogReauest = await sendGetRequest("https://localhost:7299/api/blogs");
     let allBlogs = blogReauest.errorData;
     for(let i = 0; i < allBlogs.length; i++)
     { 
@@ -57,19 +57,19 @@ function createBlogPageFunction() {
 }
 
 async function deleteBlogFunction(blogId) {
-    await sendDeleteBlogRequest(`https://localhost:7299/api/blogs/${blogId}`);
+    await sendDeleteRequest(`https://localhost:7299/api/blogs/${blogId}`);
 
-    hideBlogElement();
+    renderElementsOnBlogPage();
 }
 
 function updateBlogPageFunction(blogId) {
     document.getElementById('update')
     addEventListener('click', () => location = `https://localhost:7299/api/html/updateBlog?id=${blogId}`);
 
-    hideBlogElement();
+    renderElementsOnBlogPage();
 }
 
-function hideBlogElement(){
+function renderElementsOnBlogPage(){
     let blogsHolder = document.getElementById("blogsHolder");
     blogsHolder.innerHTML = "";
 
