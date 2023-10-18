@@ -5,18 +5,19 @@
     <title>WebApi</title>
     <link href = "/css/blogMainPageStyle.css" rel="stylesheet" type="text/css">
 </head>
-<body> 
-    <div class = "main">
-        <h1>Admin panel</h1>
-        <button class="image-addbutton" type="add" id="add" onclick="createBlogPageFunction();"></button>
-    </div>
-    <div class="container">
-        <div class = "header">
-            <div class="nav" id="blogsHolder"></div>
-            <span class = "noElementsOnPage" aria-live="polite"></span>
+    <body> 
+        <div class = "main">
+            <h1>Admin panel</h1>
+            <button class="image-addbutton" type="add" id="add" onclick="createBlogPageFunction();"></button>
         </div>
-    </div>
-    <script src="/js/request.js"></script>
-    <script src="/js/blog.js"></script>
-</body>
+        <div class="container">
+            <div class = "header">
+                <div class="nav" id="blogsHolder"></div>
+                <span class = "noElementsOnPage" aria-live="polite"></span>
+            </div>
+        </div>
+        <script src="/js/catchErrors.js"></script>
+        <script src="/js/request.js"></script>
+        <script src="/js/blog.js"></script>
+    </body>
 </html>

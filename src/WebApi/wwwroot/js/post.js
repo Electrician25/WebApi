@@ -1,39 +1,7 @@
 rendersPostPage();
 
-function sendGetRequest(uri) {
-    const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/json')
-    const request = new Request(uri, {
-        method: 'GET',
-        headers: myHeaders
-    });
- 
-    let search_result = fetch(request)
-        .then((response) => {
-            return response.json();
-        })
- 
-    return search_result;
-}
-
-function sendDeleteRequest(uri) {
-    const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/json')
-    const request = new Request(uri, {
-        method: 'DELETE',
-        headers: myHeaders
-    });
- 
-    let search_result = fetch(request)
-        .then((response) => {
-            return response.json();
-        })
- 
-    return search_result;
-}
-
 async function rendersPostPage() {    
-    let postRequest = await sendGetRequest(`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
+    let postRequest = await sendGetBlogRequest(`https://localhost:7299/api/posts/${findsCurrentPostId()}`);
     let allPosts = postRequest.errorData;
     createPostPageFunction(findsCurrentPostId());
     for(let i = 0; i < allPosts.length; i++)
@@ -49,7 +17,7 @@ async function rendersPostPage() {
     if(noObject == null)
     {
         const nameError = document.querySelector("#postsHolder + span.noElementsOnPage");
-        nameError.textContent = "Элементы отсутствуют на странице";
+        nameError.textContent = "Elements are missing from the page";
         nameError.className = "noElementsOnPage active";
     }
 }
@@ -101,7 +69,7 @@ function updatePostPageFunction(postId){
 }
 
 async function deletePostFunction(postId){
-    await sendDeleteRequest(`https://localhost:7299/api/posts/${postId}`);
+    await sendDeleteBlogRequest(`https://localhost:7299/api/posts/${postId}`);
 
     hidesPostElement();
 }

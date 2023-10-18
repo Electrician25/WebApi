@@ -11,15 +11,9 @@ const updateBlog = async () => {
     blogAuthor: document.getElementById("blogAuthor").value,
     });
 
-    let request = await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
-    console.log(request);
-    if(request.length > 1000)
-    {
-        findClones();
-    }
-    
-    else{
-        changePage();
+    let reques = await sendPutRequest(json,`https://localhost:7299/api/blogs/${blogId()}`);
+    if(reques != undefined) {
+        changeLocation();
     }
 }
 

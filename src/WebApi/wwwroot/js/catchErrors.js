@@ -64,6 +64,6 @@ function showsErrorsOnPostNameForm(){
 }
 
 function findClones(){
-    nameError.textContent = "Блог с таким названием или темой уже существует!";
+    nameError.textContent = "there is already such a post or blog!";
     document.getElementById(buttonId).disabled = true;
 }
